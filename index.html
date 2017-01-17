@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CrimsonLock</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+</head>
+
+<body ng-app="myApp">
+
+	<h1>INDEX</h1>
+
+	<ui-view>
+		Loading
+	</ui-view>
+
+	<a ui-sref="login">Login</a>
+
+
+	<!-- Libraries -->
+	<script type="text/javascript" src="lib/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="lib/bootstrap.min.js"></script>
+	<script type="text/javascript" src="lib/angular.min.js"></script>
+	<script type="text/javascript" src="lib/angular-ui-router.min.js"></script>
+	<script type="text/javascript" src="lib/angular-cookie/angular-cookie.js"></script>
+	<script type="text/javascript" src="lib/ng-token-auth/dist/ng-token-auth.js"></script>
+
+	<!-- Main Application Module -->
+	<script type="text/javascript" src="src/mainapp.js"></script>
+
+	<!-- Login -->
+	<script type="text/javascript" src="src/login/login.controller.js"></script>
+	<script type="text/javascript" src="src/login/listener.js"></script>
+
+	<!-- Accounts -->
+	<script type="text/javascript" src="src/accounts/accounts.controller.js"></script>
+
+</body>
+</html>

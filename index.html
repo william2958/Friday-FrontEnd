@@ -11,20 +11,11 @@
 
 <body ng-app="myApp">
 
-	<h1>INDEX</h1>
-
-	<ui-view>
-		Loading
-	</ui-view>
+	<ui-view></ui-view>
 
 	<checklogin></checklogin>
 
 	<wheatley></wheatley>
-
-	<a ui-sref="login">Login</a>
-	<a ui-sref="signup">Sign-up</a>
-	<a ui-sref="forgotpassword">Forgot Password</a>
-
 
 	<!-- Libraries -->
 	<script type="text/javascript" src="lib/jquery-2.1.4.min.js"></script>
@@ -36,26 +27,33 @@
 
 	<!-- Authorization Module -->
 	<script type="text/javascript" src="src/authorization/authorization.module.js"></script>
+	<script type="text/javascript" src="src/authorization/authorization.routes.js"></script>
+
+	<!-- Dashboard Module -->
+	<script type="text/javascript" src="src/dashboard/dashboard.module.js"></script>
+	<script type="text/javascript" src="src/dashboard/dashboard.routes.js"></script>
+	<script type="text/javascript" src="src/dashboard/dashboard.controller.js"></script>
 
 	<!-- Main Application Module -->
 	<script type="text/javascript" src="src/mainapp.js"></script>
-	<script type="text/javascript" src="src/login/listener.js"></script>
 
 	<!-- Wheatley -->
 	<script type="text/javascript" src="src/wheatley/wheatley.component.js"></script>
 
 	<!-- Login -->
-	<script type="text/javascript" src="src/login/login.controller.js"></script>
+	<script type="text/javascript" src="src/authorization/login/login.controller.js"></script>
 
 	<!-- Sign Up -->
-	<script type="text/javascript" src="src/signup/signup.controller.js"></script>
+	<script type="text/javascript" src="src/authorization/signup/signup.controller.js"></script>
 
 	<!-- Forgot Password -->
-	<script type="text/javascript" src="src/password/forgotpassword.controller.js"></script>
-	<script type="text/javascript" src="src/password/changepassword.controller.js"></script>
+	<script type="text/javascript" src="src/authorization/password/forgotpassword.controller.js"></script>
+	<script type="text/javascript" src="src/authorization/password/changepassword.controller.js"></script>
 
 	<!-- Accounts -->
-	<script type="text/javascript" src="src/accounts/accounts.controller.js"></script>
+	<script type="text/javascript" src="src/dashboard/accounts/accounts.controller.js"></script>
+	<script type="text/javascript" src="src/dashboard/accounts/accounts.service.js"></script>
+
 
 </body>
 </html>

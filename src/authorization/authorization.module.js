@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 
-	angular.module('authorization', ['ng-token-auth'])
+	angular.module('authorization', ['ng-token-auth', 'ui.router'])
 	.config(config);
 
 	config.$inject = ['$authProvider'];

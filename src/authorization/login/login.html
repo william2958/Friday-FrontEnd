@@ -1,0 +1,22 @@
+<form role="form">
+  <div class="form-group">
+    <label>email</label>
+    <input type="email" name="email" ng-model="login.loginForm.email" required="required" class="form-control" ng-keypress="login.keypressed()"/>
+  </div>
+
+  <div class="form-group">
+    <label>password</label>
+    <input type="password" name="password" ng-model="login.loginForm.password" required="required" class="form-control" ng-keypress="login.keypressed()"/>
+  </div>
+
+  <div ng-repeat="error in login.errors">
+  	{{error}}
+  </div>
+
+  <button type="submit" class="btn btn-primary btn-lg" ng-click="login.handleLoginBtnClick()">Sign in</button>
+
+	<a ui-sref="signup">Sign-up</a>
+	<a ui-sref="forgotpassword">Forgot Password</a>
+
+</form>
+

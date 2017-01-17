@@ -1,7 +1,7 @@
 (function() {
 'use strict';
 
-	angular.module('myApp')
+	angular.module('authorization')
 	.controller('SignupController', SignupController);
 
 	function SignupController($auth) {

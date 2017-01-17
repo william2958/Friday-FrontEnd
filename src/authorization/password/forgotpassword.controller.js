@@ -1,7 +1,7 @@
 (function() {
 'use strict';
 
-	angular.module('myApp')
+	angular.module('authorization')
 	.controller('ForgotPasswordController', ForgotPasswordController);
 
 	ForgotPasswordController.$inject = ['$auth'];

@@ -4,6 +4,7 @@
 	angular.module('myApp')
 	.controller('LoginController', LoginController);
 
+	LoginController.$inject = ['$auth'];
 	function LoginController($auth) {
 
 		var $ctrl = this;
@@ -15,11 +16,14 @@
 	      $auth.submitLogin($ctrl.loginForm)
 	        .then(function(resp) {
 	          // handle success response
-	          console.log("success")
+	          console.log("Login Successful!");
 	        })
 	        .catch(function(resp) {
 	          // handle error response
-	          console.log("failed")
+	          $ctrl.errors = resp.errors;
+	          console.log(resp);
+	          console.log($ctrl.errors[0])
+	          console.log("Login Failed...");
 	        });
 	    };
 	}

@@ -3,7 +3,7 @@
 
 	angular.module('myApp')
 	.component('checklogin', {
-		template: '<div ng-if="$ctrl.show">Successfully Logged in</div>',
+		template: '<div ng-if="$ctrl.show">Successfully Logged out</div>',
 		controller: LoggedInController
 	});
 
@@ -14,11 +14,11 @@
 
 		$ctrl.$onInit = function() {
 			$ctrl.show = false;
-			listener = $rootScope.$on('auth:login-success', onLoginSuccess);
+			listener = $rootScope.$on('auth:logout-error', onLoginSuccess);
 		};
 
 		$ctrl.$onDestroy = function() {
-			listener()
+			listener();
 		};
 
 		function onLoginSuccess(event, data) {

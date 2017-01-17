@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>CrimsonLock</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/universalstyles.css">
 </head>
 
 <body ng-app="myApp">
@@ -16,7 +17,13 @@
 		Loading
 	</ui-view>
 
+	<checklogin></checklogin>
+
+	<wheatley></wheatley>
+
 	<a ui-sref="login">Login</a>
+	<a ui-sref="signup">Sign-up</a>
+	<a ui-sref="forgotpassword">Forgot Password</a>
 
 
 	<!-- Libraries -->
@@ -27,12 +34,25 @@
 	<script type="text/javascript" src="lib/angular-cookie/angular-cookie.js"></script>
 	<script type="text/javascript" src="lib/ng-token-auth/dist/ng-token-auth.js"></script>
 
+	<!-- Authorization Module -->
+	<script type="text/javascript" src="src/authorization/authorization.module.js"></script>
+
 	<!-- Main Application Module -->
 	<script type="text/javascript" src="src/mainapp.js"></script>
+	<script type="text/javascript" src="src/login/listener.js"></script>
+
+	<!-- Wheatley -->
+	<script type="text/javascript" src="src/wheatley/wheatley.component.js"></script>
 
 	<!-- Login -->
 	<script type="text/javascript" src="src/login/login.controller.js"></script>
-	<script type="text/javascript" src="src/login/listener.js"></script>
+
+	<!-- Sign Up -->
+	<script type="text/javascript" src="src/signup/signup.controller.js"></script>
+
+	<!-- Forgot Password -->
+	<script type="text/javascript" src="src/password/forgotpassword.controller.js"></script>
+	<script type="text/javascript" src="src/password/changepassword.controller.js"></script>
 
 	<!-- Accounts -->
 	<script type="text/javascript" src="src/accounts/accounts.controller.js"></script>

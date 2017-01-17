@@ -1,15 +1,11 @@
 (function() {
 'use strict';
 
-	angular.module('myApp', ['ui.router', 'ng-token-auth'])
+	angular.module('myApp', ['ui.router', 'authorization'])
 	.config(routeConfig);
 
-	routeConfig.$inject = ['$stateProvider', '$authProvider', '$urlRouterProvider'];
-	function routeConfig ($stateProvider, $authProvider, $urlRouterProvider) {
-
-		$authProvider.configure({
-			apiUrl: 'http://localhost:3000'
-		});
+	routeConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
+	function routeConfig ($stateProvider, $urlRouterProvider) {
 
 		$urlRouterProvider.otherwise('/login');
 
@@ -39,34 +35,29 @@
 				controllerAs: 'account'
 			})
 
+			.state('signup', {
+				url: '/signup',
+				templateUrl: 'src/signup/signup.html',
+				controller: 'SignupController',
+				controllerAs: 'signup'
+			})
+
+			.state('forgotpassword', {
+				url: '/forgotpassword',
+				templateUrl: 'src/password/forgotpassword.html',
+				controller: 'ForgotPasswordController',
+				controllerAs: 'forgot'
+			})
+
+			.state('changepassword', {
+				url: '/changepassword',
+				templateUrl: 'src/password/changepassword.html',
+				controller: 'ChangePasswordController',
+				controllerAs: 'change'
+			})
+
 			
 
 	}
-	// function($authProvider, $stateProvider) {
-	// 	$authProvider.configure({
-	// 		apiUrl: 'http://localhost:3000'
-	// 	});
-
-	// 	$stateProvider// only authenticated users will be able to see routes that are
-	//       // children of this state
-	//       .state('admin', {
-	//         url: '/admin',
-	//         abstract: true,
-	//         template: 'ADMIN'
-	//         // resolve: {
-	//         //   auth: function($auth) {
-	//         //   	console.log($auth.validateUser())
-	//         //     return $auth.validateUser();
-	//         //   }
-	//         // }
-	//       })
-
-	//       // this route will only be available to authenticated users
-	//       .state('admin.dashboard', {
-	//         url: '/dash',
-	//         templateUrl: '/admin/dash.html',
-	//         controller: 'AdminDashCtrl'
-	//       });
-	// });
 
 })();

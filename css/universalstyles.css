@@ -1,12 +1,5 @@
 body {
 	font-size: 16px;
-}
-
-.wheatley {
-
-	height: 100px;
-	width: 100px;
-	border-radius: 100%;
-	margin: 40px;
-
+	background-color: #fafafa;
+	font-family: "Lato", sans-serif;
 }

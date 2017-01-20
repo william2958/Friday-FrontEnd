@@ -4,26 +4,32 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>CrimsonLock</title>
+	<title>F.R.I.D.A.Y.</title>
+
+	<!-- Stylesheets -->
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/universalstyles.css">
+
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300" rel="stylesheet">
+
 </head>
 
 <body ng-app="myApp">
 
-	<ui-view></ui-view>
-
-	<checklogin></checklogin>
-
-	<wheatley></wheatley>
+	<div class="container">
+		<ui-view></ui-view>
+	</div>
 
 	<!-- Libraries -->
 	<script type="text/javascript" src="lib/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="lib/bootstrap.min.js"></script>
 	<script type="text/javascript" src="lib/angular.min.js"></script>
 	<script type="text/javascript" src="lib/angular-ui-router.min.js"></script>
-	<script type="text/javascript" src="lib/angular-cookie/angular-cookie.js"></script>
-	<script type="text/javascript" src="lib/ng-token-auth/dist/ng-token-auth.js"></script>
+	<script type="text/javascript" src="lib/angular-cookie/angular-cookie.min.js"></script>
+	<script type="text/javascript" src="lib/ng-token-auth/dist/ng-token-auth.min.js"></script>
+	<script type="text/javascript" src="lib/snap/snap.svg-min.js"></script>
 
 	<!-- Authorization Module -->
 	<script type="text/javascript" src="src/authorization/authorization.module.js"></script>
@@ -40,15 +46,13 @@
 	<!-- Wheatley -->
 	<script type="text/javascript" src="src/wheatley/wheatley.component.js"></script>
 
-	<!-- Login -->
+	<!-- Authorization -->
 	<script type="text/javascript" src="src/authorization/login/login.controller.js"></script>
-
-	<!-- Sign Up -->
 	<script type="text/javascript" src="src/authorization/signup/signup.controller.js"></script>
-
-	<!-- Forgot Password -->
 	<script type="text/javascript" src="src/authorization/password/forgotpassword.controller.js"></script>
 	<script type="text/javascript" src="src/authorization/password/changepassword.controller.js"></script>
+	<script type="text/javascript" src="src/authorization/pin/pin.controller.js"></script>
+	<script type="text/javascript" src="src/authorization/pin/pin.service.js"></script>
 
 	<!-- Accounts -->
 	<script type="text/javascript" src="src/dashboard/accounts/accounts.controller.js"></script>

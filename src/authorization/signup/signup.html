@@ -1,23 +1,28 @@
-<form role="form" ng-init="registrationForm = {}">
+<link rel="stylesheet" type="text/css" href="css/authentication/signup.css">
+
+<form role="form">
   <div class="form-group">
-    <label>email</label>
-    <input type="email" name="email" ng-model="signup.registrationForm.email" required="required" class="form-control"/>
+    <input type="email" name="email" ng-model="signup.registrationForm.email" required="required" class="form-control text-entry-field" placeholder="Email" id="email-text-field" ng-keypress="signup.keypressed($event)"/>
   </div>
 
   <div class="form-group">
-    <label>name</label>
-    <input type="text" name="name" ng-model="signup.registrationForm.name" required="required" class="form-control"/>
+    <input type="text" name="name" ng-model="signup.registrationForm.name" required="required" class="form-control text-entry-field" placeholder="Name" id="name-text-field" ng-keypress="signup.keypressed($event)"/>
   </div>
 
   <div class="form-group">
-    <label>password</label>
-    <input type="password" name="password" ng-model="signup.registrationForm.password" required="required" class="form-control"/>
+    <input type="password" name="password" ng-model="signup.registrationForm.password" required="required" class="form-control text-entry-field" placeholder="Password" id="password-text-field" ng-keypress="signup.keypressed($event)"/>
   </div>
 
   <div class="form-group">
-    <label>password confirmation</label>
-    <input type="password" name="password_confirmation" ng-model="signup.registrationForm.password_confirmation" required="required" class="form-control"/>
+    <input type="password" name="password_confirmation" ng-model="signup.registrationForm.password_confirmation" required="required" class="form-control text-entry-field" placeholder="Confirm Password" id="password-text-field" ng-keypress="signup.keypressed($event)"/>
   </div>
 
-  <button type="submit" class="btn btn-primary btn-lg" ng-click="signup.handleRegBtnClick()">Register</button>
+  <div class="buttonrow">
+    <span class="login-button" ng-click="signup.handleRegBtnClick()">
+      Sign-up
+    </span>
+    <span class="signup-button" ui-sref="authorization.login">
+      Cancel
+    </span>
+  </div>
 </form>

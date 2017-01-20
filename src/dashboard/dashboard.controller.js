@@ -10,15 +10,11 @@
 
 		$ctrl.name = auth.name;
 
-		console.log(auth);
-
 		$ctrl.handleSignOutBtnClick = function() {
-			console.log("triggered")
 			$auth.signOut()
 				.then(function(resp) {
 					// handle success response
-					$state.go('login');
-					console.log("Successful Log Out")
+					$state.go('authorization.login');
 				})
 				.catch(function(resp) {
 					// handle error response

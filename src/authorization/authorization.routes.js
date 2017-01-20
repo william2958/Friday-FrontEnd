@@ -9,28 +9,33 @@
 
 		$stateProvider
 
-			.state('login', {
+			.state('authorization', {
+				abstract: true,
+				templateUrl: 'src/authorization/authorization.html'
+			})
+
+			.state('authorization.login', {
 				url: '/login',
 				templateUrl: 'src/authorization/login/login.html',
 				controller: 'LoginController',
 				controllerAs: 'login'
 			})
 
-			.state('signup', {
+			.state('authorization.signup', {
 				url: '/signup',
 				templateUrl: 'src/authorization/signup/signup.html',
 				controller: 'SignupController',
 				controllerAs: 'signup'
 			})
 
-			.state('forgotpassword', {
+			.state('authorization.forgotpassword', {
 				url: '/forgotpassword',
 				templateUrl: 'src/authorization/password/forgotpassword.html',
 				controller: 'ForgotPasswordController',
 				controllerAs: 'forgot'
 			})
 
-			.state('changepassword', {
+			.state('authorization.changepassword', {
 				url: '/changepassword',
 				templateUrl: 'src/authorization/password/changepassword.html',
 				controller: 'ChangePasswordController',

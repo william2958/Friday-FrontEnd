@@ -4,16 +4,19 @@
 	angular.module('dashboard')
 	.controller('AccountsController', AccountsController);
 
-	AccountsController.$inject = ['auth', '$auth', '$http', 'AccountService'];
-	function AccountsController(auth, $auth, $http, AccountService) {
+	AccountsController.$inject = ['auth', '$auth', '$state', '$http', 'AccountService'];
+	function AccountsController(auth, $auth, $state, $http, AccountService) {
 		var $ctrl = this;
-		$ctrl.accounts = auth.accounts;
+		$ctrl.accounts = {};
 
 		$ctrl.newAccount = {};
 
-		// AccountService.getAccounts().then(function(response) {
-		// 	console.log(response.data);
-		// });
+		$ctrl.$onInit = function() {
+			if (AccountService.getPin() === '') {
+				// $state.go('authorization.pin')
+			}
+			$ctrl.accounts = $ctrl.getAccounts();
+		}
 
 		$ctrl.getAccounts = function() {
 			AccountService.getAccounts().then(function(response) {
@@ -32,11 +35,15 @@
 			AccountService.addAccount(config).then(function(response) {
 				console.log(response);
 			});
+
+			$ctrl.accounts = $ctrl.getAccounts();
+
 		}
 
 		$ctrl.getStatus = function() {
 			console.log("Status Update: ");
 			console.log("The accounts are: ", $ctrl.accounts);
+			console.log("The pin is: ", AccountService.getPin())
 		}
 
 	}

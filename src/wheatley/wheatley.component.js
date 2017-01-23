@@ -29,11 +29,18 @@
 		var WheatleyHead = Wheatley.select("#Head")
 
 		$ctrl.$onInit = function() {
-			responseListener = $rootScope.$on('wheatley:respond', onWheatleyRespond)
+			responseListener = $rootScope.$on('wheatley:respond', onWheatleyRespond);
+			$ctrl.wheatleyPulse();
 		};
 
 		$ctrl.$onDestroy = function() {
 			responseListener();
+		}
+
+		$ctrl.wheatleyPulse = function() {
+			WheatleyHead.animate({r:wheatleyPulseSize}, 700, function() {
+				WheatleyHead.animate({r:$ctrl.wheatleySize-6}, 700, $ctrl.wheatleyPulse);
+			})
 		}
 
 		function onWheatleyRespond(event, data) {
@@ -91,6 +98,11 @@
 						$rootScope.$broadcast('login:success', {code: 1});
 					}, 200);
 				});
+			} else if (data.code === 7) {
+				// Make wheatley disappear
+				// Don't forget to change the 50 in pin controller as well
+				WheatleyHead.animate({r:0}, 50);
+				WheatleyBody.animate({r:0}, 50);
 			}
 		}
 

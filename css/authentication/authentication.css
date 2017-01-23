@@ -1,15 +1,66 @@
-#friday-title {
-	text-align: center;
-	margin-top: 40px;
+/* MEDIUM DEVICES */
+@media (min-width: 992px) {
+	#friday-title {
+		text-align: center;
+		margin-top: 40px;
+		font-size: 2.9em;
+	}
+
+	#beta-title {
+		text-align: center;
+		padding-left: 180px;
+		margin-top: -10px;
+	}
 }
 
-#Wheatley {
-	display: block;
-	height: 180px;
-	width: 180px;
-	border-radius: 100%;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 30px;
-	margin-bottom: 30px;
+/* SMALL DEVICES */
+@media (min-width: 768px) and (max-width: 991px) {
+	#friday-title {
+		text-align: center;
+		margin-top: 40px;
+		font-size: 2.6em;
+	}
+
+	#beta-title {
+		text-align: center;
+		padding-left: 150px;
+		margin-top: -10px;
+	}
+
+	#Wheatley {
+		display: block;
+		height: 160px;
+		width: 160px;
+		border-radius: 100%;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 30px;
+		margin-bottom: 30px;
+	}
+}
+
+/* EXTRA SMALL SCREENS */
+@media (max-width: 767px) {
+	#friday-title {
+		text-align: center;
+		margin-top: 40px;
+		font-size: 2em;
+	}
+
+	#beta-title {
+		text-align: center;
+		padding-left: 105px;
+		margin-top: -10px;
+	}
+
+	#Wheatley {
+		display: block;
+		height: 120px;
+		width: 120px;
+		border-radius: 100%;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 15px;
+		margin-bottom: 30px;
+	}
 }

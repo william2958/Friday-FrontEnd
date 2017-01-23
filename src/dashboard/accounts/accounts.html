@@ -1,10 +1,10 @@
+<link rel="stylesheet" type="text/css" href="css/dashboard/accounts.css">
+
 <h1>Accounts</h1>
 
-<div ng-repeat="account in account.accounts">
-	<account account="account"></account>
-</div>
+<button ng-click="account.handleAddAccountButtonClick()">Add Account</button>
 
-<form role="form">
+<form role="form" ng-if="account.showForm">
 
 	<div class="form-group">
 		<label>website</label>
@@ -28,3 +28,7 @@
 	<button ng-click="account.getStatus()">Get Status</button>
 
 </form>
+
+<div ng-repeat="account in account.accounts">
+	<account account="account"></account>
+</div>

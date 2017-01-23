@@ -1,0 +1,46 @@
+.account {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.account-website {
+	font-size: 2.7em;
+	margin-bottom: 0px;
+	text-transform: capitalize;
+}
+
+.account-details {
+	text-align: right;
+}
+
+.account-email {
+	font-style: italic;
+	margin-top: 0;
+}
+/* LARGE DEVICES */
+@media (min-width: 1200px) {
+	.account {
+		width: 60%;
+	}
+}
+
+/* MEDIUM DEVICES */
+@media (min-width: 992px) and (max-width: 1199px) {
+	.account {
+		width: 70%;
+	}
+}
+
+/* SMALL DEVICES */
+@media (min-width: 768px) and (max-width: 991px) {
+	.account {
+		width: 80%;
+	}	
+}
+
+/* EXTRA SMALL SCREENS */
+@media (max-width: 767px) {
+	.account {
+		width: 90%;
+	}	
+}

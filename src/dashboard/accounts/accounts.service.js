@@ -24,7 +24,6 @@
 		service.addAccount = function (data) {
 			var submittingData = data;
 			// Edit the passwords like so
-			submittingData.password += service.getPin();
 			return $http.post(ApiPath + '/accounts', data).then(function(response) {
 				return response.data;
 			});

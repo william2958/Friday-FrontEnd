@@ -1,13 +1,83 @@
-#Wheatley {
-	width: 100px;
-	height: 100px;
+/* LARGE DEVICES */
+@media (min-width: 1200px) {
+	#Wheatley {
+		width: 130px;
+		height: 130px;
+		float: right;
+	}
+	#welcome-banner {
+		padding-left: 20px;
+		padding-top: 30px;
+	}
+	#dashboard-title {
+		font-size: 3em;
+	}
+	#dashboard-welcome {
+		font-size: 1.8em;
+		margin-top: 5px;
+	}
 }
 
-#welcome-banner {
-	padding-left: 20px;
-	padding-top: 15px;
+/* MEDIUM DEVICES */
+@media (min-width: 992px) and (max-width: 1199px) {
+	#Wheatley {
+		width: 110px;
+		height: 110px;
+		float: right;
+	}
+	#welcome-banner {
+		padding-left: 20px;
+		padding-top: 15px;
+	}
+	#dashboard-title {
+		font-size: 2.7em;
+		padding-top: 12px;
+	}
+	#dashboard-welcome {
+		font-size: 1.4em;
+		margin-top: 5px;
+	}
 }
 
-#dashboard-title {
-	font-size: 2.7em;
+/* SMALL DEVICES */
+@media (min-width: 768px) and (max-width: 991px) {
+	#Wheatley {
+		width: 90px;
+		height: 90px;
+		float: right;
+	}
+	#welcome-banner {
+		padding-left: 20px;
+		padding-top: 15px;
+	}
+
+	#dashboard-title {
+		font-size: 2.4em;
+		padding-top: 5px;
+	}
+	#dashboard-welcome {
+		font-size: 1.4em;
+		margin-top: 5px;
+	}
+}
+
+/* EXTRA SMALL SCREENS */
+@media (max-width: 767px) {
+	#Wheatley {
+		width: 80px;
+		height: 80px;
+	}
+	#welcome-banner {
+		padding-left: 20px;
+		padding-top: 3px;
+	}
+
+	#dashboard-title {
+		font-size: 2em;
+		padding-top: 10px;
+	}
+	#dashboard-welcome {
+		font-size: 1.2em;
+		margin-top: 5px;
+	}
 }

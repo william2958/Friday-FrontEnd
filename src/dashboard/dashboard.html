@@ -1,14 +1,16 @@
 <link rel="stylesheet" type="text/css" href="css/dashboard/dashboard.css">
 
 <div class="row">
-	<div class="col-sm-2">
+	<div class="col-sm-5 col-xs-2">
 		<wheatley></wheatley>
 	</div>
-	<div class="col-sm-8" id="welcome-banner">
+	<div class="col-sm-7 col-xs-10" id="welcome-banner">
 		<h1 id="dashboard-title">Dashboard</h1>
-		<h3 >Welcome {{dashboard.name}}</h3>
+		<h3 id="dashboard-welcome">Welcome {{dashboard.name}}</h3>
 	</div>
 </div>
+
+<hr>
 
 <ui-view></ui-view>
 

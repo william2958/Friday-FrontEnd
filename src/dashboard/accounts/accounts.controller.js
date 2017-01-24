@@ -16,12 +16,13 @@
 		$ctrl.newAccount = {};
 		// Only show the form when the user clicks new form
 		$ctrl.showForm = false;
+		$ctrl.search = "";
 
 		$ctrl.$onInit = function() {
 			// Double check that the user has a pin registered, 
 			// or else redirect to pin entering state
 			if (AccountService.getPin() === '') {
-				$state.go('authorization.pin')
+				// $state.go('authorization.pin')
 			}
 			// Fetch the accounts using the function below
 			$ctrl.accounts = $ctrl.getAccounts();			

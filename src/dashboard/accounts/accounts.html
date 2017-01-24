@@ -4,6 +4,17 @@
 
 <button ng-click="account.handleAddAccountButtonClick()">Add Account</button>
 
+<form class="form-search"> 
+    <div class="input-append">
+      <input type="text" ng-model="account.search" class="search-query" style="width: 80px">
+    </div>
+    <!-- <ul class="nav nav-pills nav-stacked">
+      <li ng-animate="'animate'" ng-repeat="name in names | filter:search">
+        <a href="#"> {{name}} </a>
+      </li> 
+  </ul> -->
+</form>
+
 <form role="form" ng-if="account.showForm">
 
 	<div class="form-group">
@@ -29,6 +40,6 @@
 
 </form>
 
-<div ng-repeat="account in account.accounts">
+<div ng-repeat="account in account.accounts | filter:{website: account.search}">
 	<account account="account"></account>
 </div>

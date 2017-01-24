@@ -1,18 +1,20 @@
-<div class="account">
-	<!-- <div class="row">
-		<div class="col-md-6">
-			<h2 class="account-website">{{$ctrl.account.website}}</h2>
+<div class="account row">
+	<div class="col-sm-2">
+		<img src="images/wheatley1.0.svg" class="website-preview">
+	</div>
+	<div class="col-sm-8">
+		<div class="account-website">
+			{{$ctrl.account.website}}
+			<span class="account-email">{{$ctrl.account.email}}</span>
 		</div>
-		<div class="col-md-6 account-details">
-			<p>Email: {{$ctrl.account.email}}</p>
-			<p>Username: {{$ctrl.account.user_name}}</p>
-		</div>
-	</div> -->
-	<h2 class="account-website">{{$ctrl.account.website}}</h2>
+	</div>
+	<div class="col-sm-2">
+		<span class="clipboard">COPY</span>
+	</div>
+	<!-- <h2 class="account-website">{{$ctrl.account.website}}</h2>
 	<p class="account-email">{{$ctrl.account.email}}</p>
 	<p>{{$ctrl.account.password}}</p>
-	<div class="copy-password">Copy Password</div>
-	<hr>
+	<div class="copy-password">Copy Password</div>-->
 </div>
 
 

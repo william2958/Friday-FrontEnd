@@ -5,12 +5,7 @@
 	margin-bottom: 20px;
 	border-bottom: 1px solid #eee;
 	border-radius: 5px;
-}
-
-.website-preview {
-	width: 80%;
-	padding-top: 12px;
-	vertical-align: center;
+	background-color: #fcfcfc;
 }
 
 .account-website {
@@ -32,16 +27,81 @@
 	display: block;
 	font-size: 0.3em;
 	margin-top: -10px;
+	text-transform: none;
 } 
 
 .clipboard {
 	text-align: center;
-	padding-top: 20px;
+	margin-top: 35px;
+}
+
+#search-box {
+	display: block;
+	text-align: center;
+	margin: 0 auto 0;
+	font-size: 1.5em;
+	border-radius: 5px;
+	box-shadow: 0px;
+	border: 0;
+	line-height: 1.7em;
+}
+
+#add-account-button:hover {
+	cursor: pointer; 
+	cursor: hand;
+}
+
+#add-account-button {
+	margin: 10px auto 0;
+	text-align: center;
+	font-size: 1.4em;
+}
+
+.form-group {
+	margin: 0;
+}
+
+.text-entry-field {
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+	height: 50px;
+	font-size: 1.2em;
+	text-align: center;
+}
+
+#account-text-field {
+	border: 0;
+	border-bottom: 1px solid #bbb;
+	background-color: #fcfcfc;
+	box-shadow: none;
+	padding: 0;
+	border-radius: 0px;
+}
+
+.buttonrow {
+	margin-top: 4px;
+	font-size: 1.5em;
+	text-align: center;
+}
+
+.submit-account-button {
+	padding-right: 8px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 /* LARGE DEVICES */
 @media (min-width: 1200px) {
 	.account {
+		width: 60%;
+	}
+	.website-preview {
+		width: 80%;
+		margin: 5px;
+		padding-top: 10px;
+	}
+	#search-box {
 		width: 60%;
 	}
 }
@@ -51,6 +111,14 @@
 	.account {
 		width: 70%;
 	}
+	.website-preview {
+		width: 80%;
+		margin: 5px;
+		padding-top: 10px;
+	}
+	#search-box {
+		width: 70%;
+	}
 }
 
 /* SMALL DEVICES */
@@ -58,11 +126,27 @@
 	.account {
 		width: 80%;
 	}	
+	.website-preview {
+		width: 80%;
+		margin: 5px;
+		padding-top: 15px;
+	}
+	#search-box {
+		width: 80%;
+	}
 }
 
 /* EXTRA SMALL SCREENS */
 @media (max-width: 767px) {
 	.account {
 		width: 90%;
-	}	
+	}
+	.website-preview {
+		width: 60px;
+		margin: 5px;
+		padding-top: 13px;
+	}
+	#search-box {
+		width: 90%;
+	}
 }

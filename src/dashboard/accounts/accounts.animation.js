@@ -16,6 +16,7 @@
 	      link = function (scope, element, attrs, ctrl, transclude) {
 	        var closePromise, duration, elementScope, emitOnClose, getHeight, hide, lazyRender, onClose, show;
 	        duration = attrs.duration || 1;
+
 	        elementScope = element.scope();
 	        emitOnClose = attrs.emitOnClose;
 	        onClose = attrs.onClose;
@@ -36,7 +37,8 @@
 	          children = element.children();
 	          for (_i = 0, _len = children.length; _i < _len; _i++) {
 	            c = children[_i];
-	            height += c.clientHeight;
+	            // This is where you can add extra height
+	            height += (c.clientHeight);
 	          }
 	          return '' + height + 'px';
 	        };

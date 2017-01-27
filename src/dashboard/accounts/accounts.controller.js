@@ -9,7 +9,7 @@
 	function AccountsController($state, $http, AccountService, AuthorizationService) {
 		var $ctrl = this;
 
-		// Object to hold all the accounts that belong to thsi user
+		// Object to hold all the accounts that belong to this user
 		$ctrl.accounts = {};
 
 		// Objects for new account form
@@ -134,9 +134,10 @@
 
 				}
 			});
+		}
 
-			
-
+		$ctrl.expandAccount = function(index) {
+			console.log("account expanded")
 		}
 
 		// Show the form when the user clicks add account

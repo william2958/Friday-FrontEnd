@@ -18,13 +18,19 @@
 	</div>
 
 	<div class="buttonrow">
-		<div class="submit-account-button" ng-click="account.submitNewAccount()">
+		<div class="submit-account-buffer-top"></div>
+		<div id="submit-account-button" ng-click="account.submitNewAccount()">
 			Add Account
 		</div>
+		<div class="submit-account-buffer-bottom"></div>
 	</div>
 
 </form>
 
 <input type="text" name="search" ng-model="account.search" placeholder="Search" id="search-box">
 
-<account ng-repeat="account in account.accounts | filter:{website: account.search}" account="account"></account>
+<account ng-repeat="account in account.accounts | filter:{website: account.search} as results" account="account"></account>
+
+<div ng-if="results.length === 0" class="account no-results-card">
+  No results found...
+</div>

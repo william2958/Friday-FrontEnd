@@ -14,16 +14,33 @@
 
 		// To handle when the user clicks forgot password and filled out the form
 		$ctrl.handlePwdResetBtnClick = function() {
-	      AuthorizationService.requestPasswordReset($ctrl.passwordResetForm)
-	        .then(function(resp) {
-	          // handle success response
-	          $state.go('authorization.login')
-	        })
-	        .catch(function(resp) {
-	          // handle error response
-	          console.log("Password Reset Failed");
-	        });
-	    };
+
+			// Set up the config parameters for the reqest parameters
+			var config = {
+				'email': $ctrl.passwordResetForm.email
+			};
+
+			// Clear all the messages before we return anything
+			AuthorizationService.clearSuccess();
+			$ctrl.success = [];
+			AuthorizationService.clearErrors();
+			$ctrl.errors = [];
+
+			// Tell AuthorizationService to send a request to reset the password
+			AuthorizationService.requestPasswordReset(config)
+				.then(function(resp) {
+					// handle success response
+					// Add a success message to the authorization service
+					AuthorizationService.addSuccess(resp.data.message);
+					$state.go('authorization.login');
+				})
+				.catch(function(resp) {
+					// handle error response
+					// Add an error message to the authorization service
+					AuthorizationService.addError(resp.data.message);
+					$state.go('authorization.login');
+				});
+		    };
 	}
 
 })();

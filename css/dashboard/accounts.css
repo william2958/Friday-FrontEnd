@@ -3,32 +3,102 @@
 	margin-right: auto;
 	margin-top: 10px;
 	margin-bottom: 20px;
-	border-bottom: 1px solid #eee;
 	border-radius: 5px;
 	background-color: #fcfcfc;
+	border: 1px solid #eee;
 }
 
-.account-website {
-	font-size: 2.7em;
+.buffer-top {
+	height: 5px;
+}
+
+.buffer-bottom {
+	height: 5px;
+}
+
+.submit-account-buffer-top {
+	height: 8px;
+}
+
+.submit-account-buffer-bottom {
+	height: 5px;
+}
+
+.account_website {
 	text-transform: capitalize;
 	margin-top: 10px;
 	margin-bottom: 0;
 	text-align: center;
 	padding-bottom: 15px;
+	-webkit-animation: shrinkText 0.1s forwards;
 }
 
-.account-details {
-	text-align: right;
+.account_website_enlarged {
+	text-transform: capitalize;
+	margin-top: 10px;
+	margin-bottom: 0;
+	text-align: center;
+	padding-bottom: 15px;
+	-webkit-animation: enlargeText 0.1s forwards;
 }
 
-.account-email {
+@keyframes enlargeText {
+    from {font-size: 2.7em;}
+    to {font-size: 3em;}
+}
+
+@keyframes shrinkText {
+    from {font-size: 3em;}
+    to {font-size: 2.7em;}
+}
+
+.account_email {
 	font-style: italic;
 	margin-top: 0;
 	display: block;
-	font-size: 0.3em;
-	margin-top: -10px;
 	text-transform: none;
+	-webkit-animation: shrinkEmail 0.1s forwards;
 } 
+
+.account_email_enlarged {
+	font-style: italic;
+	margin-top: 0;
+	display: block;
+	text-transform: none;
+	-webkit-animation: enlargeEmail 0.1s forwards;
+} 
+
+@keyframes enlargeEmail {
+    from {
+    	font-size: 0.3em;
+    	font-style: italic;
+    	margin-top: -10px;
+    }
+    to {
+    	font-size: 0.4em;
+    	font-style: normal;
+    	margin-top: 0px;
+    }
+}
+
+@keyframes shrinkEmail {
+    from {
+    	font-size: 0.4em;
+    	font-style: normal;
+    	margin-top: 0px;
+    }
+    to {
+    	font-size: 0.3em;
+    	font-style: italic;
+       	margin-top: -10px;
+    }
+}
+
+.account-details {
+	text-align: center;
+	font-size: 1.2em;
+	padding-bottom: 5px;
+}
 
 .clipboard {
 	text-align: center;
@@ -47,6 +117,11 @@
 }
 
 #add-account-button:hover {
+	cursor: pointer; 
+	cursor: hand;
+}
+
+#submit-account-button:hover {
 	cursor: pointer; 
 	cursor: hand;
 }
@@ -70,6 +145,10 @@
 	text-align: center;
 }
 
+#search-box {
+	border: 1px solid #eee;
+}
+
 #account-text-field {
 	border: 0;
 	border-bottom: 1px solid #bbb;
@@ -82,6 +161,12 @@
 .buttonrow {
 	font-size: 1.5em;
 	text-align: center;
+}
+
+.no-results-card {
+	font-size: 2em;
+	text-align: center;
+	padding: 15px 0 15px;
 }
 
 /* LARGE DEVICES */

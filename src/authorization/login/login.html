@@ -1,9 +1,20 @@
 <link rel="stylesheet" type="text/css" href="css/authentication/login.css">
 
-<div ng-repeat="error in login.errors" id="login-errors">
+<!-- Display the errors to the user -->
+<div ng-if="login.errors.length" class="errors">
+  <div ng-repeat="error in login.errors">
     {{error}}
+  </div>
 </div>
 
+<!-- Display the success messages to the user -->
+<div ng-if="login.success.length" class="success">
+  <div ng-repeat="success in login.success">
+    {{success}}
+  </div>
+</div>
+
+<!-- Form for login submission -->
 <form role="form">
   <div class="form-group">
     <input type="email" name="email" ng-model="login.loginForm.email" required="required" class="form-control text-entry-field" ng-keypress="login.keypressed($event)" placeholder="Email" id="email-text-field"/>
@@ -13,6 +24,7 @@
     <input type="password" name="password" ng-model="login.loginForm.password" required="required" class="form-control text-entry-field" ng-keypress="login.keypressed($event)" placeholder="Password" id="password-text-field"/>
   </div>
 
+  <!-- Buttons for the user to interact with -->
   <div class="buttonrow">
     <span class="login-button" ng-click="login.handleLoginBtnClick()">
       Sign-in
@@ -22,6 +34,8 @@
     </span>
   </div>
 
+  <!-- Only show the forgot password button if the user has 
+        failed entering their password once -->
   <div class="buttonrow" ng-if="login.showforgotpassword">
     <span class="forgot-button" ui-sref="authorization.forgotpassword">
         Forgot Password?

@@ -5,7 +5,8 @@
 	.service('PinService', PinService);
 
 	function PinService() {
-
+		// Basic service to set and retreive the pin
+		// Also stores the pin
 		var service = this;
 		service.pin = "";
 

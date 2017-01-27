@@ -1,5 +1,11 @@
 <link rel="stylesheet" type="text/css" href="css/authentication/signup.css">
 
+<div ng-if="signup.errors.length" class="errors">
+  <div ng-repeat="error in signup.errors">
+    {{error}}
+  </div>
+</div>
+
 <form role="form">
   <div class="form-group">
     <input type="email" name="email" ng-model="signup.registrationForm.email" required="required" class="form-control text-entry-field" placeholder="Email" id="email-text-field" ng-keypress="signup.keypressed($event)"/>
@@ -17,8 +23,6 @@
       </div>
     </div>
   </div>
-
-  
 
   <div class="form-group">
     <input type="password" name="password" ng-model="signup.registrationForm.password" required="required" class="form-control text-entry-field" placeholder="Password" id="password-text-field" ng-keypress="signup.keypressed($event)"/>

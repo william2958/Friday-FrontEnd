@@ -25,7 +25,7 @@
 
 			.state('authorization.pin', {
 				url: '/pin',
-				templateUrl: 'src/authorization/pin/pin.html',
+				templateUrl: 'src/dashboard/pin/pin.html',
 				controller: 'PinController',
 				controllerAs: 'pin'
 			});

@@ -2,7 +2,7 @@
 	font-family: 'Roboto';
 }
 
-.signout-button:hover {
+#signout-button:hover {
 	cursor: pointer; 
 	cursor: hand;
 }

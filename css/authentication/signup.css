@@ -90,6 +90,13 @@
 	margin: 0;
 }
 
+.errors {
+	color: red;
+	text-align: center;
+	font-size: 1.1em;
+	margin-bottom: 10px;
+}
+
 /* SIGN UP PAGE END */
 
 /* LARGE DEVICES */

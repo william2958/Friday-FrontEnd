@@ -13,10 +13,17 @@
 		// Attach all login form items to this object
 		$ctrl.loginForm = {};
 
+		$ctrl.errors;
+		$ctrl.success;
+
 		// Set up a listener for a successful login from the Wheatley component
 		var loginListenerSuccess;
 
 		$ctrl.$onInit = function() {
+			$ctrl.errors = [];
+
+			$ctrl.success = AuthorizationService.getSuccess();
+			$ctrl.errors = AuthorizationService.getErrors();
 			// Initialize the listener when the controller is initialized
 			loginListenerSuccess = $rootScope.$on('login:success', onLoginSuccess);
 			// Hide the forgot password field
@@ -46,25 +53,35 @@
 				'password': $ctrl.loginForm.password
 			}
 
-
-
 			// Submit the form using AuthorizationService
 			AuthorizationService.signIn(config)
 				.then(function(resp) {
-					console.log(resp);
 					var token = resp.data.auth_token;
-					console.log("token is: ", token);
 					AuthorizationService.setToken(token);
 					// Show success indicator
 					$rootScope.$broadcast('wheatley:respond', {code: 6});
-					// handle success response
 					// Pass off to wheatley
 				})
 				.catch(function(resp) {
+					// If the sign in failed, clear all the messages
+					// So that new ones can be added
+					AuthorizationService.clearSuccess();
+					$ctrl.success = [];
+					AuthorizationService.clearErrors();
+					$ctrl.errors = [];
+					if (resp.data.status == 'error') {
+						// If the server returned an error, add it
+						// to the authorizationservice error array so 
+						// it can be displayed on the login page
+						AuthorizationService.addError(resp.data.message)
+
+						// Update the errors for the view
+						$ctrl.errors = AuthorizationService.getErrors();
+					}
 					// handle error response
 					$rootScope.$broadcast('wheatley:respond', {code: 3});
-					// Show the errors to the user
-					$ctrl.errors = resp.errors;
+					// Show the forgot password button after
+					// the user entered the wrong password
 					$ctrl.showforgotpassword = true;
 				});
 	    };

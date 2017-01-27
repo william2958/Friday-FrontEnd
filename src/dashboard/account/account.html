@@ -1,24 +1,26 @@
-<div class="account row">
-	<div class="col-xs-2 col-xxs-0">
-		<img src="images/wheatley1.0.svg" class="website-preview">
-	</div>
-	<div class="col-xs-8 col-xxs-9">
-		<div class="account-website">
-			{{$ctrl.account.website}}
-			<span class="account-email">{{$ctrl.account.email}}</span>
+<div class="account">
+	<div class="row" ng-click="$ctrl.expandAccount($ctrl.account)">
+		<div class="col-xs-2 col-xxs-0">
+			<img src="images/wheatley1.0.svg" class="website-preview">
+		</div>
+		<div class="col-xs-8 col-xxs-9">
+			<div ng-class="$ctrl.websiteClass">
+				{{$ctrl.account.website}}
+				<span ng-class="$ctrl.emailClass">{{$ctrl.account.email}}</span>
+			</div>
+		</div>
+		<div class="col-xs-2 col-xxs-3">
+			<div class="clipboard">COPY</div>
 		</div>
 	</div>
-	<div class="col-xs-2 col-xxs-3" ng-click="$ctrl.showItem(0)">
-		<div class="clipboard">COPY</div>
-	</div>
 
-	<div ng-if="$ctrl.account.account_show[$index]">
-		showing
+	<div class="additionalinfo row" ng-slide-down="$ctrl.account.showAccount" lazy-render duration="0.2" paddings="0.1">
+		<div class="buffer-top"></div>
+		<div class="account-details">
+			Account Password: {{$ctrl.account.password}}
+		</div>
+		<div class="buffer-bottom"></div>
 	</div>
-	<!-- <h2 class="account-website">{{$ctrl.account.website}}</h2>
-	<p class="account-email">{{$ctrl.account.email}}</p>
-	<p>{{$ctrl.account.password}}</p>
-	<div class="copy-password">Copy Password</div>-->
 </div>
 
 

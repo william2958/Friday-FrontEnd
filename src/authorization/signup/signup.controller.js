@@ -11,7 +11,10 @@
 
 		$ctrl.registrationForm = {};
 
+		$ctrl.errors;
+
 		$ctrl.$onInit = function() {
+			$ctrl.errors = [];
 			$rootScope.$broadcast('wheatley:respond', {code: 4});
 		}
 
@@ -27,12 +30,15 @@
 			AuthorizationService.signUp(config)
 			.then(function(resp) {
 				// handle success response
-				console.log("Registration Success!")
+				AuthorizationService.addSuccess('User successfully registered.')
+				AuthorizationService.clearErrors();
 				$state.go('authorization.login')
 			})
 			.catch(function(resp) {
-				// handle error response
-				console.log("Registration Failed...")
+				if (resp.data.status == 'error'){
+					AuthorizationService.addError(resp.data.message)
+					$ctrl.errors = AuthorizationService.getErrors();
+				}
 			});
     	};
 

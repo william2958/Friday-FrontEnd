@@ -5,8 +5,8 @@
 	angular.module('authorization')
 	.controller('LoginController', LoginController);
 
-	LoginController.$inject = ['$auth', '$state', '$rootScope', '$timeout'];
-	function LoginController($auth, $state, $rootScope, $timeout) {
+	LoginController.$inject = ['$state', '$rootScope', '$timeout', 'AuthorizationService'];
+	function LoginController($state, $rootScope, $timeout, AuthorizationService) {
 
 		var $ctrl = this;
 
@@ -40,9 +40,21 @@
 		$ctrl.handleLoginBtnClick = function() {
 			// Tell wheatley to show Loading indicator
 			$rootScope.$broadcast('wheatley:respond', {code: 1});
-			// Submit the form using $auth
-			$auth.submitLogin($ctrl.loginForm)
+
+			var config = {
+				'email': $ctrl.loginForm.email,
+				'password': $ctrl.loginForm.password
+			}
+
+
+
+			// Submit the form using AuthorizationService
+			AuthorizationService.signIn(config)
 				.then(function(resp) {
+					console.log(resp);
+					var token = resp.data.auth_token;
+					console.log("token is: ", token);
+					AuthorizationService.setToken(token);
 					// Show success indicator
 					$rootScope.$broadcast('wheatley:respond', {code: 6});
 					// handle success response

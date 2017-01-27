@@ -11,3 +11,16 @@
 	font-size: 45px;
 	border: 1px solid #eee;
 }
+
+h3 {
+	text-align: center;
+}
+
+/********** XXS SCREENS **********/
+@media (max-width: 479px) {
+	#pin-field input {
+		width: 40px;
+		height: 55px;
+		margin: 5px;
+	}
+}

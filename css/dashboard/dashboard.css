@@ -2,6 +2,11 @@
 	font-family: 'Roboto';
 }
 
+.signout-button:hover {
+	cursor: pointer; 
+	cursor: hand;
+}
+
 /* LARGE DEVICES */
 @media (min-width: 1200px) {
 	#Wheatley {
@@ -19,6 +24,10 @@
 	#dashboard-welcome {
 		font-size: 1.8em;
 		margin-top: 5px;
+	}
+	#signout-button {
+		margin-top: 80px;
+		font-size: 1.6em;
 	}
 }
 
@@ -41,6 +50,10 @@
 		font-size: 1.4em;
 		margin-top: 5px;
 	}
+	#signout-button {
+		margin-top: 70px;
+		font-size: 1.5em;
+	}
 }
 
 /* SMALL DEVICES */
@@ -61,6 +74,10 @@
 	#dashboard-welcome {
 		font-size: 1.4em;
 		margin-top: 5px;
+	}
+	#signout-button {
+		margin-top: 60px;
+		font-size: 1.4em;
 	}
 }
 

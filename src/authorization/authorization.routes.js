@@ -28,6 +28,18 @@
 				controllerAs: 'signup'
 			})
 
+			.state('authorization.confirmemail', {
+				url: '/confirm_email/:tokenParam',
+				controller: 'ConfirmEmailController',
+				controllerAs: 'confirmemail',
+				resolve: {
+					myData: ['$stateParams',
+						function($stateParams) {
+							return $stateParams.tokenParam;
+						}]
+				}
+			})
+
 			.state('authorization.forgotpassword', {
 				url: '/forgotpassword',
 				templateUrl: 'src/authorization/password/forgotpassword.html',
@@ -36,10 +48,16 @@
 			})
 
 			.state('authorization.changepassword', {
-				url: '/changepassword',
+				url: '/changepassword/:tokenParam',
 				templateUrl: 'src/authorization/password/changepassword.html',
 				controller: 'ChangePasswordController',
-				controllerAs: 'change'
+				controllerAs: 'change',
+				resolve: {
+					myData: ['$stateParams',
+						function($stateParams) {
+							return $stateParams.tokenParam;
+						}]
+				}
 			});
 	};
 

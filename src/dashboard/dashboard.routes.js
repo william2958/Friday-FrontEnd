@@ -12,11 +12,6 @@
 			.state('dashboard', {
 				abstract: true,
 				templateUrl: 'src/dashboard/dashboard.html',
-				resolve: {
-					auth: function($auth) {
-						return $auth.validateUser();
-					}
-				},
 				controller: 'DashboardController',
 				controllerAs: 'dashboard'
 			})

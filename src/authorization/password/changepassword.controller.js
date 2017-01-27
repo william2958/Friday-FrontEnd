@@ -5,18 +5,27 @@
 	angular.module('authorization')
 	.controller('ChangePasswordController', ChangePasswordController);
 
-	ChangePasswordController.$inject = ['$auth'];
-	function ChangePasswordController($auth) {
+	ChangePasswordController.$inject = ['$state', 'AuthorizationService', 'myData'];
+	function ChangePasswordController($state, AuthorizationService, myData) {
 		var $ctrl = this;
 
 		// An object to hold all the form data
 		$ctrl.updatePasswordForm = {};
 
+		console.log(myData);
+
 		// Handle what happens when the user clicks the button
 		$ctrl.handleUpdatePasswordBtnClick = function() {
-	      $auth.updatePassword($ctrl.updatePasswordForm)
+
+			var config = {
+				'confirm_token': myData,
+				'password': $ctrl.updatePasswordForm.password
+			}
+
+	      AuthorizationService.changePassword(config)
 	        .then(function(resp) {
 	          // handle success response
+	          $state.go('authorization.login')
 	          console.log("Password Reset Success");
 	        })
 	        .catch(function(resp) {

@@ -32,13 +32,21 @@
 	border-radius: 0px;
 }
 
+.name-field {
+	padding: 0;
+}
+
 #name-text-field {
+	font-size: 1.00em;
+	text-align: center;
+	height: 50px;
 	border: 0;
 	border-bottom: 1px solid #bbb;
 	background-color: #fcfcfc;
 	box-shadow: none;
 	padding: 0;
 	border-radius: 0px;
+	display: inline-block;
 }
 
 #password-text-field {
@@ -83,3 +91,31 @@
 }
 
 /* SIGN UP PAGE END */
+
+/* LARGE DEVICES */
+@media (min-width: 1200px) {
+	.text-entry-field {
+		width: 50%;
+	}
+}
+
+/* MEDIUM DEVICES */
+@media (min-width: 992px) and (max-width: 1199px) {
+	.text-entry-field {
+		width: 60%;
+	}
+}
+
+/* EXTRA SMALL SCREENS */
+@media (min-width: 480px) and (max-width: 767px) {
+	.text-entry-field {
+		width: 80%;
+	}
+}
+
+/********** XXS SCREENS **********/
+@media (max-width: 479px) {
+	.text-entry-field {
+		width: 90%;
+	}
+}

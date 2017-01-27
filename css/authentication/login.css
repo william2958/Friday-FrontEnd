@@ -66,3 +66,31 @@
 }
 
 /* END LOGIN PAGE */
+
+/* LARGE DEVICES */
+@media (min-width: 1200px) {
+	.text-entry-field {
+		width: 50%;
+	}
+}
+
+/* MEDIUM DEVICES */
+@media (min-width: 992px) and (max-width: 1199px) {
+	.text-entry-field {
+		width: 60%;
+	}
+}
+
+/* EXTRA SMALL SCREENS */
+@media (min-width: 480px) and (max-width: 767px) {
+	.text-entry-field {
+		width: 80%;
+	}
+}
+
+/********** XXS SCREENS **********/
+@media (max-width: 479px) {
+	.text-entry-field {
+		width: 90%;
+	}
+}

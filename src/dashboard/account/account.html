@@ -8,8 +8,12 @@
 			<span class="account-email">{{$ctrl.account.email}}</span>
 		</div>
 	</div>
-	<div class="col-xs-2 col-xxs-3">
+	<div class="col-xs-2 col-xxs-3" ng-click="$ctrl.showItem(0)">
 		<div class="clipboard">COPY</div>
+	</div>
+
+	<div ng-if="$ctrl.account.account_show[$index]">
+		showing
 	</div>
 	<!-- <h2 class="account-website">{{$ctrl.account.website}}</h2>
 	<p class="account-email">{{$ctrl.account.email}}</p>

@@ -1,7 +1,6 @@
 (function() {
 'use strict';
 
-	angular.module('dashboard', ['ui.router', 'ng-token-auth', 'ngAnimate'])
-	.constant('ApiPath', 'http://localhost:3000');
+	angular.module('dashboard', ['ui.router', 'ngAnimate', 'common'])
 
 })();

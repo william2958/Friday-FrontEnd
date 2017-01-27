@@ -1,7 +1,5 @@
 <link rel="stylesheet" type="text/css" href="css/dashboard/accounts.css">
 
-<input type="text" name="search" ng-model="account.search" placeholder="Search" id="search-box">
-
 <div ng-click="account.handleAddAccountButtonClick()" id="add-account-button">{{account.showForm ? 'Cancel' : 'Add Account'}}</div>
 
 <form role="form" ng-slide-down="account.showForm" lazy-render duration="0.3">
@@ -20,13 +18,13 @@
 	</div>
 
 	<div class="buttonrow">
-		<span class="submit-account-button" ng-click="account.submitNewAccount()">
+		<div class="submit-account-button" ng-click="account.submitNewAccount()">
 			Add Account
-		</span>
+		</div>
 	</div>
 
 </form>
 
-<account ng-repeat="account in account.accounts | filter:{website: account.search}" account="account"></account>
+<input type="text" name="search" ng-model="account.search" placeholder="Search" id="search-box">
 
-<button ng-click="account.getStatus()">Get Status</button>
+<account ng-repeat="account in account.accounts | filter:{website: account.search}" account="account"></account>

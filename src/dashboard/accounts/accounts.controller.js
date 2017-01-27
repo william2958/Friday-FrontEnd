@@ -5,8 +5,8 @@
 	.controller('AccountsController', AccountsController);
 
 	// Controller to handle all accounts
-	AccountsController.$inject = ['auth', '$auth', '$state', '$http', 'AccountService'];
-	function AccountsController(auth, $auth, $state, $http, AccountService) {
+	AccountsController.$inject = ['$state', '$http', 'AccountService', 'AuthorizationService'];
+	function AccountsController($state, $http, AccountService, AuthorizationService) {
 		var $ctrl = this;
 
 		// Object to hold all the accounts that belong to thsi user
@@ -31,10 +31,14 @@
 		// Function to get all the accounts from the server
 		$ctrl.getAccounts = function() {
 			// Call the accounts service
-			AccountService.getAccounts().then(function(response) {
+			AuthorizationService.getAccounts()
+
+			.then(function(response) {
+
+				console.log("response is: ", response);
 
 				// Once the accounts have arrived assign them
-				$ctrl.accounts = response.data.accounts;
+				$ctrl.accounts = response.data.data.accounts;
 
 				// Fetch the pin from the account service
 				var pin = AccountService.getPin();
@@ -118,25 +122,21 @@
 	  				// Set the config.password to the string one
 	  				config['password'] = encryptedPassword;
 	  				// Send out the http request
-	  				AccountService.addAccount(config).then(function(response) {
+	  				AuthorizationService.addAccount(config).then(function(response) {
 	  					// Log out the response to make sure it was successful
 						console.log(response);
+						$ctrl.showForm = !$ctrl.showForm;
+						// Reload the accounts
+						$ctrl.accounts = $ctrl.getAccounts();
 					});
+					
 				} else {
 
 				}
 			});
 
-			// Reload the accounts
-			$ctrl.accounts = $ctrl.getAccounts();
+			
 
-		}
-
-		// Get the status of the view *** TEMPORARY ***
-		$ctrl.getStatus = function() {
-			console.log("Status Update: ");
-			console.log("The accounts are: ", $ctrl.accounts);
-			console.log("The pin is: ", AccountService.getPin());
 		}
 
 		// Show the form when the user clicks add account

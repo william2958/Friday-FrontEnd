@@ -29,11 +29,15 @@
 	<script type="text/javascript" src="lib/bootstrap.min.js"></script>
 	<script type="text/javascript" src="lib/angular.min.js"></script>
 	<script type="text/javascript" src="lib/angular-ui-router.min.js"></script>
-	<script type="text/javascript" src="lib/angular-cookie/angular-cookie.min.js"></script>
+	<script type="text/javascript" src="lib/angular-cookies/angular-cookies.min.js"></script>
 	<script type="text/javascript" src="lib/angular-animate/angular-animate.min.js"></script>
-	<script type="text/javascript" src="lib/ng-token-auth/dist/ng-token-auth.min.js"></script>
+	<!-- <script type="text/javascript" src="lib/ng-token-auth/dist/ng-token-auth.min.js"></script> -->
 	<script type="text/javascript" src="lib/snap/snap.svg-min.js"></script>
 
+	<!-- Common Module -->
+	<script type="text/javascript" src="src/common/common.module.js"></script>
+	<script type="text/javascript" src="src/common/authorization.service.js"></script>
+	
 	<!-- Authorization Module -->
 	<script type="text/javascript" src="src/authorization/authorization.module.js"></script>
 	<script type="text/javascript" src="src/authorization/authorization.routes.js"></script>
@@ -61,6 +65,7 @@
 	<script type="text/javascript" src="src/authorization/password/changepassword.controller.js"></script>
 	<script type="text/javascript" src="src/authorization/pin/pin.controller.js"></script>
 	<script type="text/javascript" src="src/authorization/pin/pin.service.js"></script>
+	<script type="text/javascript" src="src/authorization/confirm/confirm.controller.js"></script>
 
 	<!-- Accounts -->
 	<script type="text/javascript" src="src/dashboard/accounts/accounts.controller.js"></script>

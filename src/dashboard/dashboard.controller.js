@@ -4,22 +4,30 @@
 	angular.module('dashboard')
 	.controller('DashboardController', DashboardController);
 
-	DashboardController.$inject = ['auth', '$auth', '$state'];
-	function DashboardController(auth, $auth, $state) {
+	DashboardController.$inject = ['$state', 'AuthorizationService'];
+	function DashboardController($state, AuthorizationService) {
 		var $ctrl = this;
 
-		$ctrl.name = auth.name;
+		$ctrl.user;
+
+		$ctrl.$onInit = function() {
+			if (AuthorizationService.getToken()) {
+				AuthorizationService.getUser(AuthorizationService.getToken())
+				.success(function(resp) {
+					$ctrl.user = resp;
+				})
+				.error(function(resp) {
+					console.log("There has been an error with finding the user")
+					$state.go('authorization.login');
+				});
+			} else {
+				$state.go('authorization.login');
+			}
+		}
 
 		$ctrl.handleSignOutBtnClick = function() {
-			$auth.signOut()
-				.then(function(resp) {
-					// handle success response
-					$state.go('authorization.login');
-				})
-				.catch(function(resp) {
-					// handle error response
-					console.log("Unsuccessful log out")
-				});
+			AuthorizationService.signOut()
+			$state.go('authorization.login');
 	    };
 
 	}

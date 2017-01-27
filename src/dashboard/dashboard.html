@@ -2,12 +2,15 @@
 <link rel="stylesheet" type="text/css" href="css/dashboard/navbar.css">
 
 <div class="row">
-	<div class="col-sm-5 col-xs-3 col-xxs-0">
+	<div class="col-sm-4 col-xs-3 col-xxs-0">
 		<wheatley></wheatley>
 	</div>
-	<div class="col-sm-7 col-xs-6 col-xxs-9" id="welcome-banner">
+	<div class="col-sm-5 col-xs-6 col-xxs-9" id="welcome-banner">
 		<h1 id="dashboard-title">Dashboard</h1>
-		<h3 id="dashboard-welcome">Welcome {{dashboard.name}}</h3>
+		<h3 id="dashboard-welcome">Welcome {{dashboard.user.first_name}}</h3>
+	</div>
+	<div class="col-sm-2 hidden-xs">
+		<div id="signout-button" ng-click='dashboard.handleSignOutBtnClick()'>Sign out</div>
 	</div>
 	<div class="col-xs-3 visible-xs col-xxs-3">
 		<nav id="header-nav" class="navbar navbar-default">
@@ -25,7 +28,7 @@
 	</div>
 </div>
 
-<nav id="header-nav" class="navbar navbar-default hidden-xs">
+<nav id="header-nav" class="navbar navbar-default">
 
 	<div class="container-fluid">
 
@@ -36,6 +39,11 @@
 						Accounts
 					</a>
 				</li>
+				<li class="nav-item nav-item-text visible-xs">
+					<a class="nav-item-text">
+						Logout
+					</a>
+				</li>
 			</ul>
 		</div>
 
@@ -43,5 +51,3 @@
 </nav>
 
 <ui-view></ui-view>
-
-<button class="btn btn-primary btn-lg" ng-click='dashboard.handleSignOutBtnClick()'>Sign out</button>

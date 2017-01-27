@@ -4,8 +4,8 @@
 	angular.module('authorization')
 	.controller('SignupController', SignupController);
 
-	SignupController.$inject = ['$auth', '$state', '$rootScope']
-	function SignupController($auth, $state, $rootScope) {
+	SignupController.$inject = ['$state', '$rootScope', 'AuthorizationService']
+	function SignupController($state, $rootScope, AuthorizationService) {
 
 		var $ctrl = this;
 
@@ -17,12 +17,18 @@
 
 		$ctrl.handleRegBtnClick = function() {
 
-			$state.go('authorization.login')
+			var config = {
+				'email': $ctrl.registrationForm.email,
+				'first_name': $ctrl.registrationForm.first_name,
+				'last_name': $ctrl.registrationForm.last_name,
+				'password': $ctrl.registrationForm.password
+			}
 
-			$auth.submitRegistration($ctrl.registrationForm)
+			AuthorizationService.signUp(config)
 			.then(function(resp) {
 				// handle success response
 				console.log("Registration Success!")
+				$state.go('authorization.login')
 			})
 			.catch(function(resp) {
 				// handle error response

@@ -15,13 +15,13 @@
 </div>
 
 <!-- Form for login submission -->
-<form role="form">
+<form role="form" name="loginForm" novalidate>
   <div class="form-group">
-    <input type="email" name="email" ng-model="login.loginForm.email" required="required" class="form-control text-entry-field" ng-keypress="login.keypressed($event)" placeholder="Email" id="email-text-field"/>
+    <input type="email" name="email" ng-model="login.loginForm.email" required class="form-control text-entry-field" ng-keypress="login.keypressed($event)" placeholder="Email" id="email-text-field"/>
   </div>
 
   <div class="form-group">
-    <input type="password" name="password" ng-model="login.loginForm.password" required="required" class="form-control text-entry-field" ng-keypress="login.keypressed($event)" placeholder="Password" id="password-text-field"/>
+    <input type="password" name="password" ng-model="login.loginForm.password" required class="form-control text-entry-field" ng-keypress="login.keypressed($event)" placeholder="Password" id="password-text-field"/>
   </div>
 
   <!-- Buttons for the user to interact with -->

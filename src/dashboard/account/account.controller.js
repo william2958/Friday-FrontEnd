@@ -4,8 +4,8 @@
 	angular.module('dashboard')
 	.controller('AccountController', AccountController);
 
-	AccountController.$inject = []
-	function AccountController() {
+	AccountController.$inject = ['AuthorizationService', '$rootScope']
+	function AccountController(AuthorizationService, $rootScope) {
 
 		// The controller for the individual account component
 
@@ -38,6 +38,7 @@
 			}
 		}
 
+		// Toggle between showing plain text password and a hidden password
 		$ctrl.showPassword = function() {
 			if ($ctrl.inputType == 'password') {
 				$ctrl.inputType = 'text';
@@ -46,6 +47,17 @@
 				$ctrl.inputType = 'password';
 				$ctrl.buttonText = 'Show';
 			}
+		}
+
+		// Function to remove an account
+		$ctrl.removeAccount = function(account) {
+			var config = {
+				'_id': account._id.$oid
+			}
+			AuthorizationService.deleteAccount(config);
+
+			// Broadcasts to accounts controller to refetch the accounts
+			$rootScope.$broadcast('account:delete', {refresh: true});
 		}
 
 	}

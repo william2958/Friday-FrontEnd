@@ -21,6 +21,13 @@
 				'confirm_token': myData
 			}
 
+			// Clear all the messages
+			// So that new ones can be added
+			AuthorizationService.clearSuccess();
+			$ctrl.success = [];
+			AuthorizationService.clearErrors();
+			$ctrl.errors = [];
+
 			// Call the confirmEmail function of the AuthorizationService
 			AuthorizationService.confirmEmail(config)
 			.then(function(resp) {

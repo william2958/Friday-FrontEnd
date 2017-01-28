@@ -112,6 +112,18 @@
 			})
 		}
 
+		// Delete an account from the server
+		service.deleteAccount = function(accountid) {
+			return $http({
+				method: 'POST',
+				url: ApiPath + '/accounts_delete',
+				data: accountid,
+				headers: {
+					'Authorization': $cookies.get('token')
+				}
+			})
+		}
+
 		// Confirm the email of a user with a token
 		service.confirmEmail = function(token) {
 			return $http({

@@ -16,9 +16,17 @@
 
 	<div class="additionalinfo row" ng-slide-down="$ctrl.account.showAccount" lazy-render duration="0.2" paddings="0.1">
 		<div class="buffer-top"></div>
-		<div class="account-details">
-			<input type="{{$ctrl.inputType}}" ng-model="$ctrl.account.password" class="display-password-field">
-			<button ng-click="$ctrl.showPassword()" class="show-password-button">{{$ctrl.buttonText}}</button>
+		<div class="row">
+			<div class="col-xs-2">
+				
+			</div>
+			<div class="col-xs-7 account-details">
+				<input type="{{$ctrl.inputType}}" ng-model="$ctrl.account.password" class="display-password-field">
+				<button ng-click="$ctrl.showPassword()" class="show-password-button">{{$ctrl.buttonText}}</button>
+			</div>
+			<div class="col-xs-3 delete-button" ng-click="$ctrl.removeAccount($ctrl.account)">
+				DELETE
+			</div>
 		</div>
 		<div class="buffer-bottom"></div>
 	</div>

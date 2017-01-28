@@ -51,6 +51,16 @@
 			});
     	};
 
+    	$ctrl.handleCancelClick = function() {
+    		// If the sign up cancelled, clear all the messages
+			// So that new ones can be added
+			AuthorizationService.clearSuccess();
+			$ctrl.success = [];
+			AuthorizationService.clearErrors();
+			$ctrl.errors = [];
+    		$state.go(authorization.login);
+    	}
+
     	// Every time the user presses a key update wheatley
 		$ctrl.keypressed = function(code) {
 			// Tell wheatley to pulse

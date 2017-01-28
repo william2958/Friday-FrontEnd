@@ -37,6 +37,6 @@
 
 <account ng-repeat="account in account.accounts | filter:{website: account.search} as results" account="account"></account>
 
-<div ng-if="results.length === 0" class="account no-results-card">
+<div ng-if="results.length === 0 && account.accounts > 0" class="account no-results-card">
   No results found...
 </div>

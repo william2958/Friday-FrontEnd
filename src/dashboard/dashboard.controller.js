@@ -24,6 +24,8 @@
 				})
 				.error(function(resp) {
 					// Unauthorized
+					// Delete token
+					AuthorizationService.signOut();
 					$state.go('authorization.login');
 				});
 			} else {
@@ -35,7 +37,7 @@
 		// When the user signs out, destroy the auth token from
 		// cookies by calling .signOut, then redirect
 		$ctrl.handleSignOutBtnClick = function() {
-			AuthorizationService.signOut()
+			AuthorizationService.signOut();
 			$state.go('authorization.login');
 	    };
 

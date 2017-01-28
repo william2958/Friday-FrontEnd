@@ -5,8 +5,8 @@
 	.controller('AccountsController', AccountsController);
 
 	// Controller to handle all accounts
-	AccountsController.$inject = ['$state', '$http', 'AccountService', 'AuthorizationService'];
-	function AccountsController($state, $http, AccountService, AuthorizationService) {
+	AccountsController.$inject = ['$state', '$http', 'AccountService', 'AuthorizationService', '$rootScope'];
+	function AccountsController($state, $http, AccountService, AuthorizationService, $rootScope) {
 		var $ctrl = this;
 
 		// Object to hold all the accounts that belong to this user
@@ -18,6 +18,8 @@
 		$ctrl.showForm = false;
 		$ctrl.search = "";
 
+		var deleteListener;
+
 		$ctrl.$onInit = function() {
 			// Double check that the user has a pin registered, 
 			// or else redirect to pin entering state
@@ -25,7 +27,9 @@
 				// $state.go('authorization.pin')
 			}
 			// Fetch the accounts using the function below
-			$ctrl.accounts = $ctrl.getAccounts();			
+			$ctrl.accounts = $ctrl.getAccounts();		
+
+			deleteListener = $rootScope.$on('account:delete', onAccountDelete);
 		}
 
 		// Function to get all the accounts from the server
@@ -145,6 +149,10 @@
 	    		// If the user enters the enter key
 	    		$ctrl.submitNewAccount();
 	    	}
+    	}
+
+    	function onAccountDelete(event, data) {
+    		$ctrl.accounts = $ctrl.getAccounts();
     	}
 
 	}

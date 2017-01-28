@@ -1,0 +1,121 @@
+/* CSS styles for the account component */
+
+.account {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	background-color: #fcfcfc;
+	border: 1px solid #eee;
+}
+
+.account:hover {
+	cursor: pointer; 
+	cursor: hand;
+}
+
+.account-details {
+	text-align: center;
+	font-size: 1.2em;
+	padding-bottom: 5px;
+}
+
+.buffer-top {
+	height: 5px;
+}
+
+.buffer-bottom {
+	height: 10px;
+} 
+
+.account_website {
+	text-transform: capitalize;
+	margin-top: 10px;
+	margin-bottom: 0;
+	text-align: center;
+	padding-bottom: 15px;
+	-webkit-animation: shrinkText 0.1s forwards;
+}
+
+.account_website_enlarged {
+	text-transform: capitalize;
+	margin-top: 10px;
+	margin-bottom: 0;
+	text-align: center;
+	padding-bottom: 15px;
+	-webkit-animation: enlargeText 0.1s forwards;
+}
+
+@keyframes enlargeText {
+    from {font-size: 2.7em;}
+    to {font-size: 3em;}
+}
+
+@keyframes shrinkText {
+    from {font-size: 3em;}
+    to {font-size: 2.7em;}
+}
+
+.account_email {
+	font-style: italic;
+	margin-top: 0;
+	display: block;
+	text-transform: none;
+	-webkit-animation: shrinkEmail 0.1s forwards;
+} 
+
+.account_email_enlarged {
+	font-style: italic;
+	margin-top: 0;
+	display: block;
+	text-transform: none;
+	-webkit-animation: enlargeEmail 0.1s forwards;
+} 
+
+@keyframes enlargeEmail {
+    from {
+    	font-size: 0.3em;
+    	font-style: italic;
+    	margin-top: -10px;
+    }
+    to {
+    	font-size: 0.4em;
+    	font-style: normal;
+    	margin-top: 0px;
+    }
+}
+
+@keyframes shrinkEmail {
+    from {
+    	font-size: 0.4em;
+    	font-style: normal;
+    	margin-top: 0px;
+    }
+    to {
+    	font-size: 0.3em;
+    	font-style: italic;
+       	margin-top: -10px;
+    }
+}
+
+.display-password-field {
+	padding: 2px;
+	padding-left: 5px;
+	border: 1px solid #eee;
+	border-right: 0;
+	border-bottom-left-radius: 5px;
+	border-top-left-radius: 5px;
+	text-align: center;
+}
+
+.show-password-button {
+	padding: 2px;
+	padding-right: 5px;
+	padding-left: 5px;
+	border: 1px solid #eee;
+	border-bottom-right-radius: 5px;
+	border-top-right-radius: 5px;
+	background-color: #c0deed;
+	margin-left: -3px;
+}

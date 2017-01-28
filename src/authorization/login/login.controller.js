@@ -20,6 +20,11 @@
 		var loginListenerSuccess;
 
 		$ctrl.$onInit = function() {
+
+			if (AuthorizationService.getToken()) {
+				$state.go('dashboard.accounts')
+			}
+
 			$ctrl.errors = [];
 
 			$ctrl.success = AuthorizationService.getSuccess();

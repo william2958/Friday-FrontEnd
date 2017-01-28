@@ -1,103 +1,60 @@
-.account {
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 10px;
-	margin-bottom: 20px;
+/* CSS styles for the accounts view */
+
+.submit-account-form {
+	background-color: white;
+	margin: 15px auto 15px;
 	border-radius: 5px;
-	background-color: #fcfcfc;
 	border: 1px solid #eee;
 }
 
-.buffer-top {
-	height: 5px;
-}
-
-.buffer-bottom {
-	height: 5px;
+.account-form-buffer-top {
+	height: 10px;
 }
 
 .submit-account-buffer-top {
-	height: 8px;
+	height: 15px;
 }
 
 .submit-account-buffer-bottom {
-	height: 5px;
+	height: 15px;
 }
 
-.account_website {
-	text-transform: capitalize;
-	margin-top: 10px;
-	margin-bottom: 0;
-	text-align: center;
-	padding-bottom: 15px;
-	-webkit-animation: shrinkText 0.1s forwards;
+.form-group {
+	margin: 0;
 }
 
-.account_website_enlarged {
-	text-transform: capitalize;
-	margin-top: 10px;
-	margin-bottom: 0;
-	text-align: center;
-	padding-bottom: 15px;
-	-webkit-animation: enlargeText 0.1s forwards;
-}
-
-@keyframes enlargeText {
-    from {font-size: 2.7em;}
-    to {font-size: 3em;}
-}
-
-@keyframes shrinkText {
-    from {font-size: 3em;}
-    to {font-size: 2.7em;}
-}
-
-.account_email {
-	font-style: italic;
-	margin-top: 0;
-	display: block;
-	text-transform: none;
-	-webkit-animation: shrinkEmail 0.1s forwards;
-} 
-
-.account_email_enlarged {
-	font-style: italic;
-	margin-top: 0;
-	display: block;
-	text-transform: none;
-	-webkit-animation: enlargeEmail 0.1s forwards;
-} 
-
-@keyframes enlargeEmail {
-    from {
-    	font-size: 0.3em;
-    	font-style: italic;
-    	margin-top: -10px;
-    }
-    to {
-    	font-size: 0.4em;
-    	font-style: normal;
-    	margin-top: 0px;
-    }
-}
-
-@keyframes shrinkEmail {
-    from {
-    	font-size: 0.4em;
-    	font-style: normal;
-    	margin-top: 0px;
-    }
-    to {
-    	font-size: 0.3em;
-    	font-style: italic;
-       	margin-top: -10px;
-    }
-}
-
-.account-details {
-	text-align: center;
+.account-text-entry-field {
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+	height: 50px;
 	font-size: 1.2em;
-	padding-bottom: 5px;
+	text-align: center;
+	background-color: white;
+	border: 0;
+	border-bottom: 1px solid #bbb;
+	background-color: white;
+	box-shadow: none;
+	padding: 0;
+	border-radius: 0px;
+}
+
+.col-xs-6 {
+	padding: 0;
+}
+
+#website-text-field {
+	width: 100%;
+	font-size: 1.00em;
+	text-align: center;
+	height: 50px;
+	border: 0;
+	border-bottom: 1px solid #bbb;
+	box-shadow: none;
+	padding-top: 10px;
+	border-radius: 0px;
+	display: inline-block;
+	padding: 0;
 }
 
 .clipboard {
@@ -132,30 +89,8 @@
 	font-size: 1.4em;
 }
 
-.form-group {
-	margin: 0;
-}
-
-.text-entry-field {
-	width: 70%;
-	margin-left: auto;
-	margin-right: auto;
-	height: 50px;
-	font-size: 1.2em;
-	text-align: center;
-}
-
 #search-box {
 	border: 1px solid #eee;
-}
-
-#account-text-field {
-	border: 0;
-	border-bottom: 1px solid #bbb;
-	background-color: #fcfcfc;
-	box-shadow: none;
-	padding: 0;
-	border-radius: 0px;
 }
 
 .buttonrow {
@@ -179,6 +114,9 @@
 		margin: 5px;
 		padding-top: 10px;
 	}
+	.submit-account-form {
+		width: 80%;
+	}
 	#search-box {
 		width: 60%;
 	}
@@ -193,6 +131,9 @@
 		width: 80%;
 		margin: 5px;
 		padding-top: 10px;
+	}
+	.submit-account-form {
+		width: 70%;
 	}
 	#search-box {
 		width: 70%;
@@ -209,6 +150,9 @@
 		margin: 5px;
 		padding-top: 15px;
 	}
+	.submit-account-form {
+		width: 80%;
+	}
 	#search-box {
 		width: 80%;
 	}
@@ -223,6 +167,9 @@
 		width: 60px;
 		margin: 5px;
 		padding-top: 13px;
+	}
+	.submit-account-form {
+		width: 90%;
 	}
 	#search-box {
 		width: 90%;

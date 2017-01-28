@@ -9,22 +9,17 @@
 				<span ng-class="$ctrl.emailClass">{{$ctrl.account.email}}</span>
 			</div>
 		</div>
-		<div class="col-xs-2 col-xxs-3">
+		<!-- <div class="col-xs-2 col-xxs-3">
 			<div class="clipboard">COPY</div>
-		</div>
+		</div> -->
 	</div>
 
 	<div class="additionalinfo row" ng-slide-down="$ctrl.account.showAccount" lazy-render duration="0.2" paddings="0.1">
 		<div class="buffer-top"></div>
 		<div class="account-details">
-			Account Password: {{$ctrl.account.password}}
+			<input type="{{$ctrl.inputType}}" ng-model="$ctrl.account.password" class="display-password-field">
+			<button ng-click="$ctrl.showPassword()" class="show-password-button">{{$ctrl.buttonText}}</button>
 		</div>
 		<div class="buffer-bottom"></div>
 	</div>
 </div>
-
-
-
-
-
-<!-- {{$ctrl.account.password}} -->

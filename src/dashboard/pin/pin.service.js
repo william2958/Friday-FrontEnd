@@ -10,10 +10,12 @@
 		var service = this;
 		service.pin = "";
 
+		// Get the pin
 		service.getPin = function() {
 			return service.pin;
 		}
 
+		// Set the pin
 		service.setPin = function(pin) {
 			service.pin = pin;
 		}

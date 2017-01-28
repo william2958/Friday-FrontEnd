@@ -9,8 +9,10 @@
 
 	WheatleyController.$inject = ['$rootScope', '$timeout'];
 	function WheatleyController ($rootScope, $timeout) {
+		// The controller to handle all the wheatley actions
 		var $ctrl = this;
 
+		// Set up the variables for wheatley
 		var wheatleyDefaultSize = 115;
 		$ctrl.wheatleySize = wheatleyDefaultSize;
 		$ctrl.wheatleyBodyStrokeSize = 50;
@@ -24,20 +26,24 @@
 
 		var responseListener;
 
+		// Use the Snap library to handle Wheatley animations
 		var Wheatley = Snap("#Wheatley")
 		var WheatleyBody = Wheatley.select("#Body");
 		var WheatleyHead = Wheatley.select("#Head")
 
 		$ctrl.$onInit = function() {
+			// Start listening for wheatley:respond events
 			responseListener = $rootScope.$on('wheatley:respond', onWheatleyRespond);
 			$ctrl.wheatleyPulse();
 		};
 
 		$ctrl.$onDestroy = function() {
+			// Destroy the listener
 			responseListener();
 		}
 
 		$ctrl.wheatleyPulse = function() {
+			// Tell wheatley to pulse indefinetley
 			WheatleyHead.animate({r:wheatleyPulseSize}, 700, function() {
 				WheatleyHead.animate({r:$ctrl.wheatleySize-6}, 700, $ctrl.wheatleyPulse);
 			})

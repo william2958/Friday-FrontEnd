@@ -35,8 +35,6 @@
 
 			.then(function(response) {
 
-				console.log("response is: ", response);
-
 				// Once the accounts have arrived assign them
 				$ctrl.accounts = response.data.data.accounts;
 
@@ -55,7 +53,7 @@
 				// So that we can AES encrypt it
 				scrypt(password, salt, N, r, p, dkLen, function(error, progress, key) {
 					if (error) {
-						console.log("Error: " + error);
+						// console.log("Error: " + error);
 					} else if (key) {
 						// If the hashing was successful
 						encryptedkey = key;
@@ -76,9 +74,7 @@
 				  			}
 						});
 						// All accounts have now been decrypted
-						console.log("Passwords decrypted, accounts is now: ", $ctrl.accounts)
-					} else {
-
+						// console.log("Passwords decrypted, accounts is now: ", $ctrl.accounts)
 					}
 				});
 
@@ -124,7 +120,7 @@
 	  				// Send out the http request
 	  				AuthorizationService.addAccount(config).then(function(response) {
 	  					// Log out the response to make sure it was successful
-						console.log(response);
+						// console.log(response);
 						$ctrl.showForm = !$ctrl.showForm;
 						// Reload the accounts
 						$ctrl.accounts = $ctrl.getAccounts();
@@ -136,14 +132,20 @@
 			});
 		}
 
-		$ctrl.expandAccount = function(index) {
-			console.log("account expanded")
-		}
-
 		// Show the form when the user clicks add account
 		$ctrl.handleAddAccountButtonClick = function() {
 			$ctrl.showForm = !$ctrl.showForm;
 		}
+
+		// Every time the user presses a key update wheatley
+		$ctrl.keypressed = function(code) {
+			// Tell wheatley to pulse
+	    	// $rootScope.$broadcast('wheatley:respond', {code: 0});
+	    	if (code.keyCode === 13){
+	    		// If the user enters the enter key
+	    		$ctrl.submitNewAccount();
+	    	}
+    	}
 
 	}
 

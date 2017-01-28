@@ -1,6 +1,14 @@
 (function() {
 'use strict';
 
+	// An animation javascript file attached to the dashboard module.
+	// To use just include  
+	// ng-slide-down="$ctrl.account.showAccount" lazy-render duration="0.2"
+	// as attributes $ctrl.account.showAccount is what is evaluated
+	// when decidiong when to animate
+
+	// I don't really know what's happening in this file.
+
 	angular.module('dashboard')
 	.directive('ngSlideDown', [
 	    '$timeout',

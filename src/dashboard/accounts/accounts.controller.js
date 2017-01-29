@@ -93,47 +93,51 @@
 
 		// Function to allow the controller to submit a new account
 		$ctrl.submitNewAccount = function() {
-			// The configuration for the http request
-			var config = {
-				'website': $ctrl.newAccount.website,
-				'email': $ctrl.newAccount.email,
-				'user_name': $ctrl.newAccount.username,
-				'password': $ctrl.newAccount.password
-			};
 
-			// Get the required parameters for the encryption
-			var pin = AccountService.getPin();
-			var password = new buffer.SlowBuffer(pin.normalize('NFKC'));
-      		var salt = new buffer.SlowBuffer("someSalt".normalize('NFKC'));
-			var N=512, r=8, p=1, dkLen=32;
-			var encryptedkey;
+			if ($ctrl.addAccountForm.$valid) {
 
-			// Start hashing the pin into a password for AES
-			scrypt(password, salt, N, r, p, dkLen, function(error, progress, key) {
-				if (error) {
-					console.log("Error: " + error);
-				} else if (key) {
-					encryptedkey = key;
-	  				var aesCtr = new aesjs.ModeOfOperation.ctr(encryptedkey, new aesjs.Counter(5));
-	  				// Encrypt the password the user put in after converting it to bytes
-	  				var encryptedBytes = aesCtr.encrypt(aesjs.util.convertStringToBytes(config['password']));
-	  				// Conver the array of bytes into a string so that it can be held in the database
-	  				var encryptedPassword = encryptedBytes.toString();
-	  				// Set the config.password to the string one
-	  				config['password'] = encryptedPassword;
-	  				// Send out the http request
-	  				AuthorizationService.addAccount(config).then(function(response) {
-	  					// Log out the response to make sure it was successful
-						// console.log(response);
-						$ctrl.showForm = !$ctrl.showForm;
-						// Reload the accounts
-						$ctrl.accounts = $ctrl.getAccounts();
-					});
-					
-				} else {
+				// The configuration for the http request
+				var config = {
+					'website': $ctrl.newAccount.website,
+					'email': $ctrl.newAccount.email,
+					'user_name': $ctrl.newAccount.username,
+					'password': $ctrl.newAccount.password
+				};
 
-				}
-			});
+				// Get the required parameters for the encryption
+				var pin = AccountService.getPin();
+				var password = new buffer.SlowBuffer(pin.normalize('NFKC'));
+	      		var salt = new buffer.SlowBuffer("someSalt".normalize('NFKC'));
+				var N=512, r=8, p=1, dkLen=32;
+				var encryptedkey;
+
+				// Start hashing the pin into a password for AES
+				scrypt(password, salt, N, r, p, dkLen, function(error, progress, key) {
+					if (error) {
+						console.log("Error: " + error);
+					} else if (key) {
+						encryptedkey = key;
+		  				var aesCtr = new aesjs.ModeOfOperation.ctr(encryptedkey, new aesjs.Counter(5));
+		  				// Encrypt the password the user put in after converting it to bytes
+		  				var encryptedBytes = aesCtr.encrypt(aesjs.util.convertStringToBytes(config['password']));
+		  				// Conver the array of bytes into a string so that it can be held in the database
+		  				var encryptedPassword = encryptedBytes.toString();
+		  				// Set the config.password to the string one
+		  				config['password'] = encryptedPassword;
+		  				// Send out the http request
+		  				AuthorizationService.addAccount(config).then(function(response) {
+		  					// Log out the response to make sure it was successful
+							// console.log(response);
+							$ctrl.showForm = !$ctrl.showForm;
+							// Reload the accounts
+							$ctrl.accounts = $ctrl.getAccounts();
+						});
+						
+					} else {
+
+					}
+				});
+			}
 		}
 
 		// Show the form when the user clicks add account

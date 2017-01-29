@@ -104,6 +104,25 @@
 	padding: 15px 0 15px;
 }
 
+.validation-errors-container {
+	text-align: center;
+}
+
+.validation-errors {
+	color: red;
+	font-size: 1.1em;
+	margin-bottom: 10px;
+	display: inline-block;
+}
+
+#website-text-field.ng-touched.ng-invalid {
+	border-bottom: 2px solid red;
+}
+
+#password-text-field.ng-touched.ng-invalid {
+	border-bottom: 2px solid red;
+}
+
 /* LARGE DEVICES */
 @media (min-width: 1200px) {
 	.account {

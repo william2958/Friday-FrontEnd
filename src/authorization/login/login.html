@@ -14,19 +14,30 @@
   </div>
 </div>
 
+<!-- Display an error for form validation -->
+<div class="validation-errors-container">
+  <div ng-if="login.loginForm.email.$touched">
+    <div ng-if="login.loginForm.email.$error.required" class="validation-errors">
+      Email is required. 
+    </div>
+    <div ng-if="login.loginForm.email.$error.email" class="validation-errors">Please enter a valid email address.</div>
+  </div>
+  <div ng-if="login.loginForm.password.$error.required && login.loginForm.password.$touched" class="validation-errors">Password is required. </div>
+</div>
+
 <!-- Form for login submission -->
-<form role="form" name="loginForm" novalidate>
+<form role="form" name="login.loginForm" novalidate>
   <div class="form-group">
-    <input type="email" name="email" ng-model="login.loginForm.email" required class="form-control text-entry-field" ng-keypress="login.keypressed($event)" placeholder="Email" id="email-text-field"/>
+    <input type="email" name="email" ng-model="login.enteredLoginForm.email" required class="form-control text-entry-field" ng-keypress="login.keypressed($event)" placeholder="Email" id="email-text-field"/>
   </div>
 
   <div class="form-group">
-    <input type="password" name="password" ng-model="login.loginForm.password" required class="form-control text-entry-field" ng-keypress="login.keypressed($event)" placeholder="Password" id="password-text-field"/>
+    <input type="password" name="password" ng-model="login.enteredLoginForm.password" required class="form-control text-entry-field" ng-keypress="login.keypressed($event)" placeholder="Password" id="password-text-field"/>
   </div>
 
   <!-- Buttons for the user to interact with -->
   <div class="buttonrow">
-    <span class="login-button" ng-click="login.handleLoginBtnClick()">
+    <span class="login-button" ng-click="login.handleLoginBtnClick()" ng-disabled="loginForm.$invalid">
       Sign-in
     </span>
     <span class="signup-button" ui-sref="authorization.signup">

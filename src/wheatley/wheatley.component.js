@@ -28,8 +28,8 @@
 
 		// Use the Snap library to handle Wheatley animations
 		var Wheatley = Snap("#Wheatley")
-		var WheatleyBody = Wheatley.select("#Body");
-		var WheatleyHead = Wheatley.select("#Head")
+		var WheatleyBody = Wheatley.select("#outsidering");
+		var WheatleyHead = Wheatley.select("#statusring_1_")
 
 		$ctrl.$onInit = function() {
 			// Start listening for wheatley:respond events

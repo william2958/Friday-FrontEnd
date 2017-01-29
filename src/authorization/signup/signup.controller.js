@@ -16,6 +16,8 @@
 		// Errors to show the user if something goes wrong
 		$ctrl.errors;
 
+		$ctrl.passwords_match = false;
+
 		$ctrl.$onInit = function() {
 			// Reset the errors on initialization
 			$ctrl.errors = [];
@@ -25,30 +27,43 @@
 
 		$ctrl.handleRegBtnClick = function() {
 
-			// Set up a config object to hold all the data from the form
-			var config = {
-				'email': $ctrl.registrationForm.email,
-				'first_name': $ctrl.registrationForm.first_name,
-				'last_name': $ctrl.registrationForm.last_name,
-				'password': $ctrl.registrationForm.password
-			}
+			console.log($ctrl.signupForm.$valid)
 
-			// Tell AuthorizationService to send out the request with the
-			// config parameters
-			AuthorizationService.signUp(config)
-			.then(function(resp) {
-				// handle success response
-				AuthorizationService.addSuccess('User successfully registered.')
-				AuthorizationService.clearErrors();
-				$state.go('authorization.login')
-			})
-			.catch(function(resp) {
-				if (resp.data.status == 'error'){
-					// Display the errors to the user
-					AuthorizationService.addError(resp.data.message)
-					$ctrl.errors = AuthorizationService.getErrors();
+			if ($ctrl.signupForm.$valid) {
+
+				if ($ctrl.registrationForm.password === $ctrl.registrationForm.password_confirmation) {
+
+					$ctrl.passwords_match = false;
+
+					// Set up a config object to hold all the data from the form
+					var config = {
+						'email': $ctrl.registrationForm.email,
+						'first_name': $ctrl.registrationForm.first_name,
+						'last_name': $ctrl.registrationForm.last_name,
+						'password': $ctrl.registrationForm.password
+					}
+
+					// Tell AuthorizationService to send out the request with the
+					// config parameters
+					AuthorizationService.signUp(config)
+					.then(function(resp) {
+						// handle success response
+						AuthorizationService.addSuccess('User successfully registered.')
+						AuthorizationService.clearErrors();
+						$state.go('authorization.login')
+					})
+					.catch(function(resp) {
+						if (resp.data.status == 'error'){
+							// Display the errors to the user
+							AuthorizationService.addError(resp.data.message)
+							$ctrl.errors = AuthorizationService.getErrors();
+						}
+					});
+				} else {
+					$ctrl.passwords_match = true;
 				}
-			});
+
+			}
     	};
 
     	$ctrl.handleCancelClick = function() {
@@ -58,7 +73,7 @@
 			$ctrl.success = [];
 			AuthorizationService.clearErrors();
 			$ctrl.errors = [];
-    		$state.go(authorization.login);
+    		$state.go('authorization.login');
     	}
 
     	// Every time the user presses a key update wheatley

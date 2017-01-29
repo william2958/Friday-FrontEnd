@@ -11,8 +11,8 @@
 
 #email-text-field {
 	border: 0;
-	border-bottom: 1px solid #bbb;
 	background-color: #fcfcfc;
+	border-bottom: 1px solid #bbb;
 	box-shadow: none;
 	padding: 0;
 	border-radius: 0px;
@@ -71,6 +71,25 @@
 	text-align: center;
 	font-size: 1.1em;
 	margin-bottom: 10px;
+}
+
+.validation-errors-container {
+	text-align: center;
+}
+
+.validation-errors {
+	color: red;
+	font-size: 1.1em;
+	margin-bottom: 10px;
+	display: inline-block;
+}
+
+#email-text-field.ng-touched.ng-invalid {
+	border-bottom: 2px solid red;
+}
+
+#password-text-field.ng-touched.ng-invalid {
+	border-bottom: 2px solid red;
 }
 
 /* END LOGIN PAGE */

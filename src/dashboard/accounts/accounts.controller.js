@@ -83,11 +83,11 @@
 				});
 
 				// Loop through each account removing the .com and .ca from the title
-				angular.forEach($ctrl.accounts, function(value, key) {
-					if ($ctrl.accounts[key].website){
-						$ctrl.accounts[key].website = $ctrl.accounts[key].website.replace(/.com|.ca/gi, "");
-		  			}
-				});
+				// angular.forEach($ctrl.accounts, function(value, key) {
+				// 	if ($ctrl.accounts[key].website){
+				// 		$ctrl.accounts[key].website = $ctrl.accounts[key].website.replace(/.com|.ca/gi, "");
+		  // 			}
+				// });
 			})
 		}
 

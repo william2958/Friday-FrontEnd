@@ -17,6 +17,13 @@
 		$ctrl.inputType = 'password';
 		$ctrl.buttonText = 'Show';
 
+		$ctrl.$onInit = function() {
+			$ctrl.originalAccount = $ctrl.account.website;
+			$ctrl.editedAccount = $ctrl.account.website.split('.')[0];
+			// $ctrl.editedAccount = $ctrl.account.website.replace(/.com|.ca/gi, "");
+			$ctrl.account.website = $ctrl.editedAccount;
+		}
+
 		// When the user wishes to expand the account, switch the class
 		// of the component
 		$ctrl.expandAccount = function(account) {
@@ -25,8 +32,10 @@
 
 			// Switch the website class to enlarged and back
 			if ($ctrl.websiteClass === 'account_website') {
+				$ctrl.account.website = $ctrl.originalAccount;
 				$ctrl.websiteClass = 'account_website_enlarged';
 			} else if ($ctrl.websiteClass === 'account_website_enlarged') {
+				$ctrl.account.website = $ctrl.editedAccount;
 				$ctrl.websiteClass = 'account_website';
 			}
 

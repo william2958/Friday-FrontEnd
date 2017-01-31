@@ -17,6 +17,13 @@
 
 		var $ctrl = this;
 
+		$ctrl.digit1 = "";
+		$ctrl.digit2 = "";
+		$ctrl.digit3 = "";
+		$ctrl.digit4 = "";
+		$ctrl.digit5 = "";
+		$ctrl.digit6 = "";
+
 		// Fetch all six digit fields
 		var digit1 = $element.find('#digit1');
 		var digit2 = $element.find('#digit2');
@@ -32,22 +39,29 @@
 
 		// Set the focus to the next digit every time one digit is entered
 		$ctrl.digit1entered = function() {
-			digit2.focus();
+			if($ctrl.digit1.length === 1){
+				digit2.focus();
+			}
 		}
 		$ctrl.digit2entered = function() {
-			digit3.focus();
+			if($ctrl.digit2.length === 1){
+				digit3.focus();
+			}
 		}
 		$ctrl.digit3entered = function() {
-			digit4.focus();
+			if($ctrl.digit3.length === 1){
+				digit4.focus();
+			}
 		}
 		$ctrl.digit4entered = function() {
-			digit5.focus();
+			if($ctrl.digit4.length === 1){
+				digit5.focus();
+			}
 		}
 		$ctrl.digit5entered = function() {
-			digit6.focus();
-		}
-		$ctrl.digit6entered = function() {
-			$ctrl.setPin();
+			if($ctrl.digit5.length === 1){
+				digit6.focus();
+			}
 		}
 
 		// Update wheatley whenever a key is pressed down
@@ -55,21 +69,39 @@
 			$rootScope.$broadcast('wheatley:respond', {code: 0});
 		}
 
+		// Try and submit the pin every time the user enters a digit
+		$ctrl.digitEnteredUp = function() {
+			$ctrl.submitPin();
+		}
+
+		// Function to call to submit the pin and handle errors
+		$ctrl.submitPin = function() {
+			$ctrl.setPin();
+		}
+
 		// Set the pin using the six entered digits
 		$ctrl.setPin = function() {
-			var finalPin = $ctrl.digit1;
-			finalPin += $ctrl.digit2;
-			finalPin += $ctrl.digit3;
-			finalPin += $ctrl.digit4;
-			finalPin += $ctrl.digit5;
-			finalPin += $ctrl.digit6;
-			PinService.setPin(finalPin);
-			// Tell wheatley to disappear
-			$rootScope.$broadcast('wheatley:respond', {code: 7});
-			$timeout(function() {
-				// Move on to the next state
-				$state.go('dashboard.accounts')
-			}, 50);
+
+			if ($ctrl.digit1.length === 1 && 
+				$ctrl.digit2.length === 1 &&
+				$ctrl.digit3.length === 1 &&
+				$ctrl.digit4.length === 1 &&
+				$ctrl.digit5.length === 1 &&
+				$ctrl.digit6.length === 1) {
+				var finalPin = $ctrl.digit1;
+				finalPin += $ctrl.digit2;
+				finalPin += $ctrl.digit3;
+				finalPin += $ctrl.digit4;
+				finalPin += $ctrl.digit5;
+				finalPin += $ctrl.digit6;
+				PinService.setPin(finalPin);
+				// Tell wheatley to disappear
+				$rootScope.$broadcast('wheatley:respond', {code: 7});
+				$timeout(function() {
+					// Move on to the next state
+					$state.go('dashboard.accounts')
+				}, 50);
+			}
 			
 		}
 	}

@@ -29,9 +29,32 @@
 		// Use the Snap library to handle Wheatley animations
 		var Wheatley = Snap("#Wheatley")
 		var WheatleyBody = Wheatley.select("#outsidering");
-		var WheatleyHead = Wheatley.select("#statusring_1_")
+		var WheatleyHead = Wheatley.select("#statusring_1_");
+		var OutsideRing = Wheatley.select("#outsidering");
+		var OutisdeRingWrapper = Wheatley.select("#outsideringwrapper");
+		var InsideRing = Wheatley.select("#insidering_1_");
+		var StatusRing = Wheatley.select("#statusring_1_");
+		var CoreRing = Wheatley.select("#corering");
+		var DashedRing = Wheatley.select("#dashedring");
+		var EntireRing = Wheatley.select("#entirering");
+
+		var outsideRingCounter = 0;
+
+		// Activates every time something hovers over Wheatley
+		Wheatley.hover(function() {
+			// console.log("hovering\n");
+		})
 
 		$ctrl.$onInit = function() {
+			InsideRing.attr({
+				fill: "#1DCAFF"
+			});
+
+			OutsideRing.attr({
+				stroke: "#0084B4",
+				fill: "#0084B4"
+			})
+
 			// Start listening for wheatley:respond events
 			responseListener = $rootScope.$on('wheatley:respond', onWheatleyRespond);
 			$ctrl.wheatleyPulse();
@@ -44,20 +67,62 @@
 
 		$ctrl.wheatleyPulse = function() {
 			// Tell wheatley to pulse indefinetley
-			WheatleyHead.animate({r:wheatleyPulseSize}, 700, function() {
-				WheatleyHead.animate({r:$ctrl.wheatleySize-6}, 700, $ctrl.wheatleyPulse);
-			})
+			// WheatleyHead.animate({r:wheatleyPulseSize}, 700, function() {
+			// 	WheatleyHead.animate({r:$ctrl.wheatleySize-6}, 700, $ctrl.wheatleyPulse);
+			// })
+			statusRingRotate();
+			outsideRingRotate();
+			insideRingRotate();
+		}
+
+		function outsideRingRotate() {
+			OutsideRing.transform('r0,150,150');
+			OutsideRing.animate({
+				transform: 'r360,150,150'
+			}, 30000, outsideRingRotate);
+		}
+
+		function insideRingRotate() {
+			InsideRing.transform('r0,150,150');
+			InsideRing.animate({
+				transform: 'r360,150,150'
+			}, 23000, insideRingRotate);
+		}
+
+		function statusRingRotate() {
+			StatusRing.transform('r0,150,150');
+			StatusRing.animate({
+				transform: 'r-360,150,150'
+			}, 20000, statusRingRotate);
 		}
 
 		function onWheatleyRespond(event, data) {
 			if (data.code === 0) {
 				// Key pressed code
-				WheatleyHead.animate({r:wheatleyPulseSize}, 15, function() {
-					WheatleyHead.animate({r:$ctrl.wheatleySize}, 15);
-				})
+				// WheatleyHead.animate({r:wheatleyPulseSize}, 15, function() {
+				// 	WheatleyHead.animate({r:$ctrl.wheatleySize}, 15);
+				// })
+
+				DashedRing.animate({
+					transform: 's1.05, 150, 150'
+				}, 10);
+
+				CoreRing.animate({
+					transform: 's1.05,150,150'
+				}, 10, function() {
+					CoreRing.animate({
+						transform: 's1,150,150'
+					}, 10);
+					DashedRing.animate({
+						transform: 's1, 150, 150'
+					}, 10);
+				});
 			} else if (data.code === 1) {
 				// Loading code
-				WheatleyBody.animate({'stroke': 'orange'}, 200);
+				// WheatleyBody.animate({'stroke': 'orange'}, 200);
+				InsideRing.animate({
+					fill: 'orange'
+				}, 100);
 			} else if (data.code === 2) {
 				// Normal Success code
 				WheatleyHead.animate({r:wheatleyFailureSize}, 80, function() {
@@ -69,46 +134,86 @@
 				});
 			} else if (data.code === 3) {
 				// Failure code
-				WheatleyHead.animate({r:wheatleyFailureSize}, 80, function() {
-					WheatleyBody.animate({'stroke': '#F9423A'}, 200);
-					WheatleyHead.animate({r:$ctrl.wheatleySize}, 200);
-					$timeout(function() {
-						WheatleyBody.animate({'stroke': '#4AC7EE'}, 100);
-					}, 200);
+				// WheatleyHead.animate({r:wheatleyFailureSize}, 80, function() {
+				// 	WheatleyBody.animate({'stroke': '#F9423A'}, 200);
+				// 	WheatleyHead.animate({r:$ctrl.wheatleySize}, 200);
+				// 	$timeout(function() {
+				// 		WheatleyBody.animate({'stroke': '#4AC7EE'}, 100);
+				// 	}, 200);
+				// });
+				InsideRing.animate({
+					fill: "red"
+				}, 200);
+				OutsideRing.animate({
+					fill: "red",
+					stroke: "red"
+				}, 200, function() {
+					InsideRing.animate({
+						fill: "#1DCAFF"
+					}, 400);
+					OutsideRing.animate({
+						fill: "#0084B4",
+						stroke: "#0084B4"
+					}, 400);
 				});
 			} else if (data.code === 4) {
 				// Make wheatley smaller
-				$ctrl.wheatleySize = wheatleySmallSize;
-				WheatleyHead.animate({r:wheatleySmallSize}, 100);
-				WheatleyBody.animate({r:wheatleySmallSize}, 100);
-				wheatleyPulseSize = $ctrl.wheatleySize + 6;
-				wheatleySuccessSize = $ctrl.wheatleySize + $ctrl.wheatleyBodyStrokeSize/2;
-				wheatleyFailureSize = $ctrl.wheatleySize + 16;
-				wheatleySmallSize = $ctrl.wheatleySize - 30;
+				// $ctrl.wheatleySize = wheatleySmallSize;
+				// WheatleyHead.animate({r:wheatleySmallSize}, 100);
+				// WheatleyBody.animate({r:wheatleySmallSize}, 100);
+				// wheatleyPulseSize = $ctrl.wheatleySize + 6;
+				// wheatleySuccessSize = $ctrl.wheatleySize + $ctrl.wheatleyBodyStrokeSize/2;
+				// wheatleyFailureSize = $ctrl.wheatleySize + 16;
+				// wheatleySmallSize = $ctrl.wheatleySize - 30;
+				EntireRing.animate({
+					transform: 's0.8,150,150'
+				}, 100);
 			} else if (data.code === 5) {
 				// Make wheatley normal sized
-				$ctrl.wheatleySize = wheatleyDefaultSize;
-				WheatleyHead.animate({r:$ctrl.wheatleySize}, 100);
-				WheatleyBody.animate({r:$ctrl.wheatleySize}, 100);
-				wheatleyPulseSize = $ctrl.wheatleySize + 6;
-				wheatleySuccessSize = $ctrl.wheatleySize + $ctrl.wheatleyBodyStrokeSize/2;
-				wheatleyFailureSize = $ctrl.wheatleySize + 16;
-				wheatleySmallSize = $ctrl.wheatleySize - 30;
+				// $ctrl.wheatleySize = wheatleyDefaultSize;
+				// WheatleyHead.animate({r:$ctrl.wheatleySize}, 100);
+				// WheatleyBody.animate({r:$ctrl.wheatleySize}, 100);
+				// wheatleyPulseSize = $ctrl.wheatleySize + 6;
+				// wheatleySuccessSize = $ctrl.wheatleySize + $ctrl.wheatleyBodyStrokeSize/2;
+				// wheatleyFailureSize = $ctrl.wheatleySize + 16;
+				// wheatleySmallSize = $ctrl.wheatleySize - 30;
+				EntireRing.animate({
+					transform: 's1,150,150'
+				}, 100);
 			} else if (data.code === 6) {
 				// Success Login code
-				WheatleyHead.animate({r:wheatleyFailureSize}, 80, function() {
-					WheatleyBody.animate({'stroke': 'lime'}, 200);
-					WheatleyHead.animate({r:$ctrl.wheatleySize}, 200);
-					$timeout(function() {
-						WheatleyBody.animate({'stroke': '#4AC7EE'}, 100);
-						$rootScope.$broadcast('login:success', {code: 1});
-					}, 200);
-				});
+				// WheatleyHead.animate({r:wheatleyFailureSize}, 80, function() {
+				// 	WheatleyBody.animate({'stroke': 'lime'}, 200);
+				// 	WheatleyHead.animate({r:$ctrl.wheatleySize}, 200);
+				// 	$timeout(function() {
+				// 		WheatleyBody.animate({'stroke': '#4AC7EE'}, 100);
+				// 	}, 200);
+				// });
+				
+				InsideRing.animate({
+					fill: "green"
+				}, 300);
+				OutsideRing.animate({
+					fill: "green",
+					stroke: "green"
+				}, 300, function() {
+					InsideRing.animate({
+						fill: "#1DCAFF"
+					}, 400);
+					OutsideRing.animate({
+						fill: "#0084B4",
+						stroke: "#0084B4"
+					}, 400);
+					$rootScope.$broadcast('login:success', {code: 1});
+				})
 			} else if (data.code === 7) {
 				// Make wheatley disappear
 				// Don't forget to change the 50 in pin controller as well
-				WheatleyHead.animate({r:0}, 50);
-				WheatleyBody.animate({r:0}, 50);
+				EntireRing.animate({
+					transform: 's0.1,150,150'
+				}, 100);
+				// WheatleyHead.animate({r:0}, 50);
+				// WheatleyBody.animate({r:0}, 50);
 			}
 		}
 

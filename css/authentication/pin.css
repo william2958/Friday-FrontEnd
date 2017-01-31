@@ -16,6 +16,30 @@ h3 {
 	text-align: center;
 }
 
+#digit1.ng-touched.ng-empty {
+	border: 3px solid red;
+}
+
+#digit2.ng-touched.ng-empty {
+	border: 3px solid red;
+}
+
+#digit3.ng-touched.ng-empty {
+	border: 3px solid red;
+}
+
+#digit4.ng-touched.ng-empty {
+	border: 3px solid red;
+}
+
+#digit5.ng-touched.ng-empty {
+	border: 3px solid red;
+}
+
+#digit6.ng-touched.ng-empty {
+	border: 3px solid red;
+}
+
 /********** XXS SCREENS **********/
 @media (max-width: 479px) {
 	#pin-field input {

@@ -7,8 +7,8 @@
 		controller: WheatleyController
 	});
 
-	WheatleyController.$inject = ['$rootScope', '$timeout'];
-	function WheatleyController ($rootScope, $timeout) {
+	WheatleyController.$inject = ['$state', '$rootScope', '$timeout', 'AuthorizationService'];
+	function WheatleyController ($state, $rootScope, $timeout, AuthorizationService) {
 		// The controller to handle all the wheatley actions
 		var $ctrl = this;
 
@@ -42,8 +42,28 @@
 
 		// Activates every time something hovers over Wheatley
 		Wheatley.hover(function() {
-			// console.log("hovering\n");
-		})
+			if (!AuthorizationService.getToken()) {
+				EntireRing.animate({
+					transform: 's1.05, 150, 150'
+				}, 50);
+			}
+		});
+
+		Wheatley.mouseout(function() {
+			if (!AuthorizationService.getToken()) {
+				EntireRing.animate({
+					transform: 's1, 150, 150'
+				}, 50);
+			}
+		});
+
+		Wheatley.click(function() {
+			if (AuthorizationService.getToken()) {
+				$state.go('dashboard.accounts');
+			} else {
+				$state.go('authorization.login');
+			}
+		});
 
 		$ctrl.$onInit = function() {
 			InsideRing.attr({

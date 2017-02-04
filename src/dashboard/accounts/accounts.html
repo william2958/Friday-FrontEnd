@@ -5,7 +5,7 @@
 
 <form role="form" ng-slide-down="account.showForm" lazy-render duration="0.3" ng-keypress="account.keypressed($event)" class="submit-account-form" name="account.addAccountForm">
 
-	<div class="validation-errors-container">
+	<!-- <div class="validation-errors-container">
 	  <div ng-if="account.addAccountForm.website.$touched">
 	    <div ng-if="account.addAccountForm.website.$error.required" class="validation-errors">
 	      Website is required. 
@@ -17,7 +17,7 @@
 	    </div>
 	  </div>
 	  <div ng-if="account.addAccountForm.password.$error.required && account.addAccountForm.password.$touched" class="validation-errors">Password is required. </div>
-	</div>
+	</div> -->
 
 	<div class="row account-text-entry-field">
 		<div class="account-form-buffer-top"></div>
@@ -35,6 +35,20 @@
 
 	<div class="form-group">
 		<input type="text" name="password" ng-model="account.newAccount.password" required="required" class="form-control account-text-entry-field" placeholder="password" id="password-text-field">
+	</div>
+
+	<div class="row">
+		<div class="col-xs-12">
+			<md-content id="slider-container">
+				<md-slider-container>
+					<span>0</span>
+					<md-slider flex="" ng-model="account.slidervalue" ng-change="account.lengthChanged()" aria-label="password length" min="0" max="21" id="slider-container" class="md-primary">
+					</md-slider>
+					<span>21</span>
+				</md-slider-container>
+		     </md-content>
+		</div>
+		
 	</div>
 
 	<div class="buttonrow">

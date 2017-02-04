@@ -1,7 +1,7 @@
 body {
 	font-size: 16px;
 	background-color: #fafafa;
-	font-family: "Lato", sans-serif;
+	font-family: "Lato-Light", "Lato", "Roboto-Light", "Roboto", sans-serif;
 }
 
 #Wheatley {
@@ -13,4 +13,11 @@ body {
 	margin-right: auto;
 	margin-top: 30px;
 	margin-bottom: 30px;
+}
+
+div:focus, div:active, div.active, div:focus:active {
+	background-image: none;
+  	outline: none;
+    -webkit-box-shadow: none;
+  	box-shadow: none;
 }

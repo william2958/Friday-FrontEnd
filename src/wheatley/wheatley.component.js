@@ -41,7 +41,7 @@
 		var outsideRingCounter = 0;
 
 		// Activates every time something hovers over Wheatley
-		Wheatley.hover(function() {
+		EntireRing.hover(function() {
 			if (!AuthorizationService.getToken()) {
 				EntireRing.animate({
 					transform: 's1.05, 150, 150'
@@ -49,7 +49,7 @@
 			}
 		});
 
-		Wheatley.mouseout(function() {
+		EntireRing.mouseout(function() {
 			if (!AuthorizationService.getToken()) {
 				EntireRing.animate({
 					transform: 's1, 150, 150'
@@ -142,15 +142,15 @@
 				// WheatleyBody.animate({'stroke': 'orange'}, 200);
 				InsideRing.animate({
 					fill: 'orange'
-				}, 100);
+				}, 50);
 			} else if (data.code === 2) {
 				// Normal Success code
 				WheatleyHead.animate({r:wheatleyFailureSize}, 80, function() {
-					WheatleyBody.animate({'stroke': 'lime'}, 200);
-					WheatleyHead.animate({r:$ctrl.wheatleySize}, 200);
+					WheatleyBody.animate({'stroke': 'lime'}, 50);
+					WheatleyHead.animate({r:$ctrl.wheatleySize}, 50);
 					$timeout(function() {
 						WheatleyBody.animate({'stroke': '#4AC7EE'}, 100);
-					}, 200);
+					}, 50);
 				});
 			} else if (data.code === 3) {
 				// Failure code
@@ -211,19 +211,19 @@
 				// });
 				
 				InsideRing.animate({
-					fill: "green"
-				}, 300);
+					fill: "lime"
+				}, 50);
 				OutsideRing.animate({
-					fill: "green",
-					stroke: "green"
-				}, 300, function() {
+					fill: "lime",
+					stroke: "lime"
+				}, 50, function() {
 					InsideRing.animate({
 						fill: "#1DCAFF"
-					}, 400);
+					}, 100);
 					OutsideRing.animate({
 						fill: "#0084B4",
 						stroke: "#0084B4"
-					}, 400);
+					}, 100);
 					$rootScope.$broadcast('login:success', {code: 1});
 				})
 			} else if (data.code === 7) {

@@ -4,8 +4,8 @@
 	angular.module('dashboard')
 	.controller('AccountController', AccountController);
 
-	AccountController.$inject = ['AuthorizationService', '$rootScope']
-	function AccountController(AuthorizationService, $rootScope) {
+	AccountController.$inject = ['AuthorizationService', 'AccountService', '$rootScope']
+	function AccountController(AuthorizationService, AccountService, $rootScope) {
 
 		// The controller for the individual account component
 
@@ -16,34 +16,47 @@
 		$ctrl.emailClass = 'account_email';
 		$ctrl.inputType = 'password';
 		$ctrl.buttonText = 'Show';
+		$ctrl.editAccount = false;
+		$ctrl.preview_size = '';
 
 		$ctrl.$onInit = function() {
 			$ctrl.originalAccount = $ctrl.account.website;
 			$ctrl.editedAccount = $ctrl.account.website.split('.')[0];
 			// $ctrl.editedAccount = $ctrl.account.website.replace(/.com|.ca/gi, "");
 			$ctrl.account.website = $ctrl.editedAccount;
+			
 		}
 
 		// When the user wishes to expand the account, switch the class
 		// of the component
 		$ctrl.expandAccount = function(account) {
-			// Show the account with this variable
-			account.showAccount = !account.showAccount;
+			$ctrl.editAccountForm = {};
+			$ctrl.editAccountForm.email = $ctrl.account.email;
+			$ctrl.editAccountForm.website = $ctrl.originalAccount;
+			$ctrl.editAccountForm.password = $ctrl.account.password;
+			console.log("The account is: ", $ctrl.account.password);
 
-			// Switch the website class to enlarged and back
-			if ($ctrl.websiteClass === 'account_website') {
-				$ctrl.account.website = $ctrl.originalAccount;
-				$ctrl.websiteClass = 'account_website_enlarged';
-			} else if ($ctrl.websiteClass === 'account_website_enlarged') {
-				$ctrl.account.website = $ctrl.editedAccount;
-				$ctrl.websiteClass = 'account_website';
-			}
+			if (!$ctrl.editAccount) {
+				// Show the account with this variable
+				account.showAccount = !account.showAccount;
 
-			// Switch the email class to enlarged and back
-			if ($ctrl.emailClass === 'account_email') {
-				$ctrl.emailClass = 'account_email_enlarged';
-			} else if ($ctrl.emailClass === 'account_email_enlarged') {
-				$ctrl.emailClass = 'account_email';
+				// Switch the website class to enlarged and back
+				if ($ctrl.websiteClass === 'account_website') {
+					$ctrl.preview_size = 'preview_full';
+					$ctrl.account.website = $ctrl.originalAccount;
+					$ctrl.websiteClass = 'account_website_enlarged';
+				} else if ($ctrl.websiteClass === 'account_website_enlarged') {
+					$ctrl.preview_size = '';
+					$ctrl.account.website = $ctrl.editedAccount;
+					$ctrl.websiteClass = 'account_website';
+				}
+
+				// Switch the email class to enlarged and back
+				if ($ctrl.emailClass === 'account_email') {
+					$ctrl.emailClass = 'account_email_enlarged';
+				} else if ($ctrl.emailClass === 'account_email_enlarged') {
+					$ctrl.emailClass = 'account_email';
+				}
 			}
 		}
 
@@ -58,15 +71,83 @@
 			}
 		}
 
+		// Toggle to editing mode
+		$ctrl.toggleEditAccount = function(account) {
+			$ctrl.showPassword();
+			if ($ctrl.editAccount) {
+
+				// Check to see if there was actually any changes
+				if ($ctrl.editAccountForm.website !== $ctrl.account.website
+					|| $ctrl.editAccountForm.email !== $ctrl.account.email
+					|| $ctrl.editAccountForm.password !== $ctrl.account.password) {
+					// Only submit changes if they are different
+
+					// config object to be sent off to the server
+					var config = {
+						'website': $ctrl.editAccountForm.website,
+						'email': $ctrl.editAccountForm.email,
+						'password': $ctrl.editAccountForm.password,
+						'_id': account._id.$oid
+					}
+
+					console.log(config);
+
+					// We have to reencrypt the password
+					// Get the required parameters for the encryption
+					var pin = AccountService.getPin();
+					var password = new buffer.SlowBuffer(pin.normalize('NFKC'));
+		      		var salt = new buffer.SlowBuffer("someSalt".normalize('NFKC'));
+					var N=512, r=8, p=1, dkLen=32;
+					var encryptedkey;
+
+					// Start hashing the pin into a password for AES
+					scrypt(password, salt, N, r, p, dkLen, function(error, progress, key) {
+						if (error) {
+							console.log("Error: " + error);
+						} else if (key) {
+							encryptedkey = key;
+			  				var aesCtr = new aesjs.ModeOfOperation.ctr(encryptedkey, new aesjs.Counter(5));
+			  				// Encrypt the password the user put in after converting it to bytes
+			  				var encryptedBytes = aesCtr.encrypt(aesjs.util.convertStringToBytes(config['password']));
+			  				// Conver the array of bytes into a string so that it can be held in the database
+			  				var encryptedPassword = encryptedBytes.toString();
+			  				// Set the config.password to the string one
+			  				config['password'] = encryptedPassword;
+			  				// Send out the http request
+			  				AuthorizationService.editAccount(config).then(function(response) {
+			  					console.log("saved")
+			  					$ctrl.account.website = $ctrl.editAccountForm.website;
+			  					$ctrl.account.email = $ctrl.editAccountForm.email;
+			  					$ctrl.account.password = $ctrl.editAccountForm.password;
+			  					// Log out the response to make sure it was successful
+								$ctrl.editAccount = false;
+							});
+							
+						}
+					});
+				} else {
+					$ctrl.editAccount = false;
+				}
+			} else {
+				$ctrl.editAccount = true;
+			}
+			
+		}
+
 		// Function to remove an account
 		$ctrl.removeAccount = function(account) {
-			var config = {
-				'_id': account._id.$oid
+			if ($ctrl.editAccount) {
+				$ctrl.editAccount = false;
+			} else {
+				var config = {
+					'_id': account._id.$oid
+				}
+				AuthorizationService.deleteAccount(config)
+					.then(function(resp) {
+						// Broadcasts to accounts controller to refetch the accounts
+						$rootScope.$broadcast('account:delete', {refresh: true});
+					});
 			}
-			AuthorizationService.deleteAccount(config);
-
-			// Broadcasts to accounts controller to refetch the accounts
-			$rootScope.$broadcast('account:delete', {refresh: true});
 		}
 
 	}

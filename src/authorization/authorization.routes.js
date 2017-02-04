@@ -9,9 +9,7 @@
 	routeConfig.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
 	function routeConfig ($stateProvider, $urlRouterProvider, $locationProvider) {
 
-		// $locationProvider.html5Mode({
-		// 	enabled: true
-		// });
+		$locationProvider.html5Mode(true);
 
 		// Set the default state to login
 		$urlRouterProvider.otherwise('/');

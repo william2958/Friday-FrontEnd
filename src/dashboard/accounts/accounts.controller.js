@@ -18,7 +18,12 @@
 		$ctrl.showForm = false;
 		$ctrl.search = "";
 
+		$ctrl.slidervalue = 8;
+
 		var deleteListener;
+
+		// Used for generating a random password
+		var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
 		$ctrl.$onInit = function() {
 			// Double check that the user has a pin registered, 
@@ -131,6 +136,7 @@
 							$ctrl.showForm = !$ctrl.showForm;
 							// Reload the accounts
 							$ctrl.accounts = $ctrl.getAccounts();
+							$ctrl.newAccount = {};
 						});
 						
 					} else {
@@ -157,6 +163,16 @@
 
     	function onAccountDelete(event, data) {
     		$ctrl.accounts = $ctrl.getAccounts();
+    	}
+
+    	$ctrl.lengthChanged = function() {
+
+    		var text = "";
+
+		    for( var i=0; i < $ctrl.slidervalue; i++ )
+		        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+		    $ctrl.newAccount.password = text;
     	}
 
 	}

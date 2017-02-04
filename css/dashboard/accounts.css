@@ -123,16 +123,26 @@
 	border-bottom: 2px solid red;
 }
 
+md-content#slider-container {
+	width: 70%;
+	margin: 0 auto 0;
+	padding: 10px;
+	padding-left: 30px;
+	padding-right: 30px;
+	background-color: transparent;
+}
+
+md-slider.md-primary .md-track.md-track-fill{
+	background-color: black;
+}
+
+md-slider.md-default-theme.md-primary .md-thumb:after, md-slider.md-primary .md-thumb:after {
+	border-color: black;
+	background-color: black;
+}
+
 /* LARGE DEVICES */
 @media (min-width: 1200px) {
-	.account {
-		width: 60%;
-	}
-	.website-preview {
-		width: 80%;
-		margin: 5px;
-		padding-top: 10px;
-	}
 	.submit-account-form {
 		width: 80%;
 	}
@@ -143,14 +153,6 @@
 
 /* MEDIUM DEVICES */
 @media (min-width: 992px) and (max-width: 1199px) {
-	.account {
-		width: 70%;
-	}
-	.website-preview {
-		width: 80%;
-		margin: 5px;
-		padding-top: 10px;
-	}
 	.submit-account-form {
 		width: 70%;
 	}
@@ -161,14 +163,6 @@
 
 /* SMALL DEVICES */
 @media (min-width: 768px) and (max-width: 991px) {
-	.account {
-		width: 80%;
-	}	
-	.website-preview {
-		width: 80%;
-		margin: 5px;
-		padding-top: 15px;
-	}
 	.submit-account-form {
 		width: 80%;
 	}
@@ -179,18 +173,18 @@
 
 /* EXTRA SMALL SCREENS */
 @media (max-width: 767px) {
-	.account {
-		width: 90%;
-	}
-	.website-preview {
-		width: 60px;
-		margin: 5px;
-		padding-top: 13px;
-	}
 	.submit-account-form {
 		width: 90%;
 	}
 	#search-box {
 		width: 90%;
+	}
+	.account-text-entry-field {
+		width: 90%;
+	}
+	md-content#slider-container {
+		width: 90%;
+		padding-left: 5px;
+		padding-right: 5px;
 	}
 }

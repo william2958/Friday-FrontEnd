@@ -112,6 +112,18 @@
 			})
 		}
 
+		// Edit an account
+		service.editAccount = function(data) {
+			return $http({
+				method: 'POST',
+				url: ApiPath + '/accounts_edit',
+				data: data,
+				headers: {
+					'Authorization': $cookies.get('token')
+				}
+			})
+		}
+
 		// Delete an account from the server
 		service.deleteAccount = function(accountid) {
 			return $http({

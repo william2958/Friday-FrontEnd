@@ -29,6 +29,15 @@
 	height: 10px;
 } 
 
+.no-padding-col {
+	padding: 0;
+}
+
+#website-preview {
+	padding-right: 0;
+	text-align: center;
+}
+
 .account_website {
 	text-transform: capitalize;
 	margin-top: 10px;
@@ -44,6 +53,7 @@
 	margin-bottom: 0;
 	text-align: center;
 	padding-bottom: 15px;
+	width: 100%;
 	-webkit-animation: enlargeText 0.1s forwards;
 }
 
@@ -120,9 +130,157 @@
 	margin-left: -3px;
 }
 
+.show-password-button:focus, .show-password-button:active, .show-password-button.active, .show-password-button:focus:active {
+	background-image: none;
+  	outline: none;
+    -webkit-box-shadow: none;
+  	box-shadow: none;
+}
+
+.edit-button {
+	text-align: right;
+	font-size: 1.2em;
+	margin-top: 3px;
+	padding: 0;
+}
+
 .delete-button {
 	text-align: left;
-	margin-top: 5px;
+	margin-top: 3px;
 	font-size: 1.2em;
 	color: red;
+	padding: 0;
+}
+
+#website-text-field {
+	width: 100%;
+	text-align: center;
+	border: 0;
+	border-bottom: 1px solid #bbb;
+	box-shadow: none;
+	border-radius: 0px;
+	padding: 0;
+	display: block;
+	margin-top: 19px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#email-text-field {
+	width: 80%;
+	font-size: 0.4em;
+	text-align: center;
+	border: 0;
+	border-bottom: 1px solid #bbb;
+	box-shadow: none;
+	border-radius: 0px;
+	padding: 0;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 9px;
+}
+
+/* LARGE DEVICES */
+@media (min-width: 1200px) {
+	.account {
+		width: 60%;
+	}
+	.website-preview {
+		width: 80%;
+		margin: 5px;
+		padding-top: 10px;
+	}
+	md-content#slider-container {
+		width: 80%;
+	}
+	#website-text-field {
+		width: 80%;
+	}
+}
+
+/* MEDIUM DEVICES */
+@media (min-width: 992px) and (max-width: 1199px) {
+	.account {
+		width: 70%;
+	}
+	.website-preview {
+		width: 80%;
+		margin: 5px;
+		padding-top: 10px;
+	}
+	md-content#slider-container {
+		width: 70%;
+	}
+	#website-text-field {
+		width: 70%;
+	}
+}
+
+/* SMALL DEVICES */
+@media (min-width: 768px) and (max-width: 991px) {
+	.account {
+		width: 80%;
+	}	
+	.website-preview {
+		width: 80%;
+		margin: 5px;
+		padding-top: 8px;
+	}
+	md-content#slider-container {
+		width: 80%;
+	}
+	#website-text-field {
+		width: 80%;
+	}
+}
+
+/* EXTRA SMALL SCREENS */
+@media (min-width: 480px) and (max-width: 767px) {
+	.account {
+		width: 90%;
+	}
+	.website-preview {
+		width: 60px;
+		margin: 5px;
+		padding-top: 13px;
+	}
+	md-content#slider-container {
+		width: 90%;
+	}
+	.col-xxs-12 {
+		width: 100%;
+	}
+	#website-text-field {
+		width: 90%;
+	}
+}
+
+/********** XXS SCREENS **********/
+@media (max-width: 479px) {
+	.preview_full {
+		width: 100%;
+	}
+	.display-password-field {
+		width: 60%;
+	}
+	.hidden-xxs {
+		display: none;
+	}
+	.visible-xxs {
+		display: block;
+	}
+	.xxs-buttons {
+		text-align: center;
+		width: 90%;
+	}
+	.edit-button {
+		display: inline-block;
+		padding-right: 9px;
+	}
+	.delete-button {
+		border-left: 1px solid #eee;
+		padding-left: 10px;
+		display: inline-block;
+	}
 }

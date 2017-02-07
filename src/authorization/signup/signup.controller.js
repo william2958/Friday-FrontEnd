@@ -33,6 +33,9 @@
 
 				if ($ctrl.registrationForm.password === $ctrl.registrationForm.password_confirmation) {
 
+					AuthorizationService.clearSuccess();
+					AuthorizationService.clearErrors();
+
 					$ctrl.passwords_match = false;
 
 					// Set up a config object to hold all the data from the form
@@ -43,11 +46,16 @@
 						'password': $ctrl.registrationForm.password
 					}
 
+					// Tell wheatley to show Loading indicator
+					$rootScope.$broadcast('wheatley:respond', {code: 1});
+
 					// Tell AuthorizationService to send out the request with the
 					// config parameters
 					AuthorizationService.signUp(config)
 					.then(function(resp) {
 						// handle success response
+						// Show success indicator
+						$rootScope.$broadcast('wheatley:respond', {code: 2});
 						AuthorizationService.addSuccess('User successfully registered.')
 						AuthorizationService.clearErrors();
 						$state.go('authorization.login')

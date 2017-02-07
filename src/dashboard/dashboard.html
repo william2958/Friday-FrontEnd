@@ -1,17 +1,28 @@
 <link rel="stylesheet" type="text/css" href="css/dashboard/dashboard.css">
 <link rel="stylesheet" type="text/css" href="css/dashboard/navbar.css">
 
-<div class="row">
-	<div class="col-sm-4 col-xs-3 wheatleydashboardcontainer">
-		<wheatley></wheatley>
-	</div>
-	<div class="col-sm-5 col-xs-6 col-xxs-7" id="welcome-banner">
-		<h1 id="dashboard-title">Dashboard</h1>
+<div class="row dashboard-header">
+	
+	<div class="col-sm-5 col-xs-8 col-xxs-7" id="welcome-banner">
+		<h1 id="dashboard-title">F.R.I.D.A.Y.</h1>
 		<h3 id="dashboard-welcome">Welcome {{dashboard.user.first_name}}</h3>
 	</div>
-	<div class="col-sm-2 hidden-xs">
-		<div id="signout-button" ng-click='dashboard.handleSignOutBtnClick()'>Sign out</div>
+
+	<div class="col-sm-2 wheatleydashboardcontainer hidden-xs">
+		<wheatley></wheatley>
 	</div>
+	
+	<div class="col-sm-5 col-xs-2 hidden-xs menu-choices">
+		<ul>
+			<li>
+			<div class="dashboard-nav-item hvr-underline-reveal" ui-sref="dashboard.accounts">Accounts</div>
+			</li>
+			<li>
+			<button id="signout-button" ng-click='dashboard.handleSignOutBtnClick()'>Sign out</button>
+			</li>
+		</ul>
+	</div>
+
 	<div class="col-xs-2 visible-xs nav-button">
 		<nav id="header-nav" class="navbar navbar-default">
 				<button id="navbarToggle" type="button" class="navbar-toggle collapsed visible-xs" data-toggle="collapse" data-target="#collapsable-nav" aria-expanded="false">
@@ -24,7 +35,7 @@
 	</div>
 </div>
 
-<nav id="header-nav" class="navbar navbar-default">
+<nav id="header-nav" class="navbar navbar-default visible-xs">
 
 	<div class="container-fluid">
 
@@ -37,7 +48,7 @@
 				</li>
 				<li class="nav-item nav-item-text visible-xs" ng-click="dashboard.handleSignOutBtnClick()">
 					<a class="nav-item-text">
-						Logout
+						Sign out
 					</a>
 				</li>
 			</ul>

@@ -16,13 +16,13 @@
 
 <!-- Display an error for form validation -->
 <div class="validation-errors-container">
-  <div ng-if="login.loginForm.email.$touched">
-    <div ng-if="login.loginForm.email.$error.required" class="validation-errors">
+  <span ng-if="login.loginForm.email.$touched">
+    <span ng-if="login.loginForm.email.$error.required" class="validation-errors">
       Email is required. 
-    </div>
-    <div ng-if="login.loginForm.email.$error.email" class="validation-errors">Please enter a valid email address.</div>
-  </div>
-  <div ng-if="login.loginForm.password.$error.required && login.loginForm.password.$touched" class="validation-errors">Password is required. </div>
+    </span>
+    <span ng-if="login.loginForm.email.$error.email" class="validation-errors">Please enter a valid email address.</span>
+  </span>
+  <span ng-if="login.loginForm.password.$error.required && login.loginForm.password.$touched" class="validation-errors">Password is required. </span>
 </div>
 
 <!-- Form for login submission -->
@@ -52,8 +52,8 @@
         Forgot Password?
     </span>
   </div>
-
-  
-
 </form>
 
+<div class="signupnowbutton">
+  <button id="about-button" class="hvr-grow" ui-sref="security">About F.R.I.D.A.Y.</button>
+</div>

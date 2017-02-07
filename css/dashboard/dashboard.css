@@ -1,6 +1,9 @@
-#welcome-banner {
-	font-family: 'Roboto';
-	text-align: center;
+.dashboard-header {
+	background-color: #c3dfed;
+}
+
+#dashboard-welcome {
+	margin-top: 0px;
 }
 
 #signout-button:hover {
@@ -21,77 +24,190 @@
 	display: none;
 }
 
+.wheatleydashboardcontainer {
+	position: relative;
+}
+
+ul {
+	float: right;
+	margin-top: 5px;
+}
+
+ul > li {
+	display: inline-block;
+}
+
+#signout-button:hover {
+	-webkit-animation: highlightSignOut 0.4s forwards;
+}
+
+@keyframes highlightSignOut {
+	from {box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12)}
+	to {box-shadow: -3px 4px 7px 0 rgba(0,0,0,.16), 3px 4px 12px 0 rgba(0,0,0,.12)}
+}
+
+@keyframes dehighlightSignOut {
+	from {box-shadow: -3px 4px 7px 0 rgba(0,0,0,.16), 3px 4px 12px 0 rgba(0,0,0,.12)}
+	to {box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12)}
+}
+
+/* Underline Reveal */
+.hvr-underline-reveal {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  position: relative;
+  overflow: hidden;
+}
+.hvr-underline-reveal:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #2098D1;
+  height: 2px;
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.hvr-underline-reveal:hover:before, .hvr-underline-reveal:focus:before, .hvr-underline-reveal:active:before {
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+
+#Wheatley {
+	position: absolute;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+	z-index: 1;
+	width: 100px;
+	height: 100px;
+}
+
 /* LARGE DEVICES */
 @media (min-width: 1200px) {
 	#Wheatley {
-		width: 130px;
-		height: 130px;
-		float: right;
-	}
-	#welcome-banner {
-		padding-left: 20px;
-		padding-top: 30px;
-	}
-	#dashboard-title {
-		font-size: 3em;
+		top: -25px;
 	}
 	#dashboard-welcome {
-		font-size: 1.8em;
+		font-size: 1.4em;
 		margin-top: 5px;
 	}
 	#signout-button {
-		margin-top: 80px;
-		font-size: 1.6em;
+		margin-top: 27px;
+		margin-right: 10px;
+		background-color: #fbc02d;
+		border: 0;
+		border-radius: 3px;
+		font-size: 1.4em;
+		padding: 8px;
+		-webkit-animation: dehighlightSignOut 0.4s forwards;
+	}
+	#welcome-banner {
+		text-align: left;
+		padding-left: 30px;
+		padding-top: 3px;
+		margin-bottom: 10px;
+	}
+	#dashboard-title {
+		margin-bottom: 0px;
+		margin-top: 13px;
+		font-size: 2.7em;
+	}
+	.dashboard-nav-item {
+		font-size: 1.4em;
+		margin-right: 20px;
+		border: 0;
+		padding-bottom: 6px;
 	}
 }
 
 /* MEDIUM DEVICES */
 @media (min-width: 992px) and (max-width: 1199px) {
 	#Wheatley {
-		width: 110px;
-		height: 110px;
-		float: right;
-	}
-	#welcome-banner {
-		padding-left: 20px;
-		padding-top: 15px;
-	}
-	#dashboard-title {
-		font-size: 2.7em;
-		padding-top: 12px;
+		top: -25px;
 	}
 	#dashboard-welcome {
 		font-size: 1.4em;
 		margin-top: 5px;
 	}
 	#signout-button {
-		margin-top: 70px;
-		font-size: 1.5em;
+		margin-top: 27px;
+		margin-right: 10px;
+		background-color: #fbc02d;
+		border: 0;
+		border-radius: 3px;
+		font-size: 1.4em;
+		padding: 8px;
+		-webkit-animation: dehighlightSignOut 0.4s forwards;
+	}
+	#welcome-banner {
+		text-align: left;
+		padding-left: 30px;
+		padding-top: 3px;
+		margin-bottom: 10px;
+	}
+	#dashboard-title {
+		margin-bottom: 0px;
+		margin-top: 13px;
+		font-size: 2.7em;
+	}
+	.dashboard-nav-item {
+		font-size: 1.4em;
+		margin-right: 20px;
+		border: 0;
+		padding-bottom: 6px;
 	}
 }
 
 /* SMALL DEVICES */
 @media (min-width: 768px) and (max-width: 991px) {
 	#Wheatley {
-		width: 90px;
-		height: 90px;
-		float: right;
-	}
-	#welcome-banner {
-		padding-left: 20px;
-		padding-top: 15px;
-	}
-	#dashboard-title {
-		font-size: 2.4em;
-		padding-top: 5px;
+		width: 80px;
+		height: 80px;
+		top: -25px;
 	}
 	#dashboard-welcome {
-		font-size: 1.4em;
+		font-size: 1.1em;
 		margin-top: 5px;
 	}
 	#signout-button {
-		margin-top: 60px;
-		font-size: 1.4em;
+		margin-top: 27px;
+		margin-right: 10px;
+		background-color: #fbc02d;
+		border: 0;
+		border-radius: 3px;
+		font-size: 1.1em;
+		padding: 8px;
+		-webkit-animation: dehighlightSignOut 0.4s forwards;
+	}
+	#welcome-banner {
+		text-align: left;
+		padding-left: 30px;
+		padding-top: 3px;
+		margin-bottom: 10px;
+	}
+	#dashboard-title {
+		margin-bottom: 0px;
+		margin-top: 13px;
+		font-size: 2.2em;
+	}
+	.dashboard-nav-item {
+		font-size: 1.1em;
+		margin-right: 20px;
+		border: 0;
+		padding-bottom: 6px;
 	}
 }
 
@@ -100,58 +216,45 @@
 	#Wheatley {
 		width: 80px;
 		height: 80px;
-		float: right;
-	}
-	#welcome-banner {
-		padding-left: 20px;
-		padding-top: 3px;
-	}
-	#dashboard-title {
-		font-size: 2em;
-		padding-top: 10px;
+		top: -20px;
+		left: 55px;
 	}
 	#dashboard-welcome {
-		font-size: 1.2em;
+		font-size: 1.1em;
 		margin-top: 5px;
 	}
-	.display-password-field {
-		width: 70%;
+	#welcome-banner {
+		text-align: center;
+		padding-top: 3px;
+		margin-bottom: 10px;
 	}
-	.wheatleydashboardcontainer {
-		padding-right: 0;
-		text-align: right;
-	}
-	.nav-button {
-		padding: 0;
-		text-align: right;
+	#dashboard-title {
+		margin-bottom: 0px;
+		margin-top: 13px;
+		font-size: 2.2em;
 	}
 }
 
 /********** XXS SCREENS **********/
 @media (max-width: 479px) {
 	#Wheatley {
-		width: 70px;
-		height: 70px;
-		float: right;
-	}
-	#welcome-banner {
-		padding-left: 30px;
-		padding-top: 3px;
-	}
-	#dashboard-title {
-		font-size: 1.9em;
-		padding-top: 10px;
+		width: 80px;
+		height: 80px;
+		top: -20px;
+		left: 25px;
 	}
 	#dashboard-welcome {
-		font-size: 1em;
+		font-size: 1.1em;
 		margin-top: 5px;
 	}
-	.wheatleydashboardcontainer {
-		padding-right: 0;
-		text-align: right;
+	#welcome-banner {
+		text-align: center;
+		padding-top: 3px;
+		margin-bottom: 10px;
 	}
-	.nav-button {
-		padding: 0;
-		text-align: right;
+	#dashboard-title {
+		margin-bottom: 0px;
+		margin-top: 13px;
+		font-size: 2.2em;
 	}
 }

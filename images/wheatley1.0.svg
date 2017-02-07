@@ -3,9 +3,9 @@
 <svg version="1.1" id="Wheatley" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 300 300" style="enable-background:new 0 0 300 300;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:none;stroke:#00aced;stroke-width:50;stroke-miterlimit:10;}
-	.st1{fill:none;stroke:#c0deed;stroke-width:3;stroke-miterlimit:10;}
+	.st40{fill:none;stroke:#00aced;stroke-width:50;stroke-miterlimit:10;}
+	.st41{fill:none;stroke:#c0deed;stroke-width:3;stroke-miterlimit:10;}
 </style>
-<circle id="Head" class="st0" cx="150" cy="150" r="115"/>
-<circle id="Body" class="st1" cx="150" cy="150" r="115"/>
+<circle id="Head" class="st40" cx="150" cy="150" r="115"/>
+<circle id="Body" class="st41" cx="150" cy="150" r="115"/>
 </svg>

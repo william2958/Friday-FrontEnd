@@ -1,5 +1,5 @@
 #header-nav {
-	background-color: #fafafa;
+	background-color: transparent;
 	border-radius: 0;
 	border: 0;
 }
@@ -17,13 +17,12 @@
 }
 
 .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
-    background-color: #fbfbfb;
+    background-color: transparent;
 }
 
 #nav-list {
 	margin-top: 10px;
 	width: 100%;
-	font-family: 'Roboto';
 	font-size: 1.5em;
 	margin: 0;
 }
@@ -35,7 +34,8 @@
 
 #navbarToggle {
 	float: right;
-	padding-top: 55px;
+	padding-top: 35px;
+	padding-right: 25px;
 }
 
 #nav-list li {

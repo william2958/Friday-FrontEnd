@@ -101,6 +101,8 @@
 
 			if ($ctrl.addAccountForm.$valid) {
 
+				console.log($ctrl.newAccount);
+
 				// The configuration for the http request
 				var config = {
 					'website': $ctrl.newAccount.website,

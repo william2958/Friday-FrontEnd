@@ -41,21 +41,21 @@
 		var outsideRingCounter = 0;
 
 		// Activates every time something hovers over Wheatley
-		EntireRing.hover(function() {
-			if (!AuthorizationService.getToken()) {
-				EntireRing.animate({
-					transform: 's1.05, 150, 150'
-				}, 50);
-			}
-		});
+		// EntireRing.hover(function() {
+		// 	if (!AuthorizationService.getToken()) {
+		// 		EntireRing.animate({
+		// 			transform: 's1.05, 150, 150'
+		// 		}, 50);
+		// 	}
+		// });
 
-		EntireRing.mouseout(function() {
-			if (!AuthorizationService.getToken()) {
-				EntireRing.animate({
-					transform: 's1, 150, 150'
-				}, 50);
-			}
-		});
+		// EntireRing.mouseout(function() {
+		// 	if (!AuthorizationService.getToken()) {
+		// 		EntireRing.animate({
+		// 			transform: 's1, 150, 150'
+		// 		}, 50);
+		// 	}
+		// });
 
 		Wheatley.click(function() {
 			if (AuthorizationService.getToken()) {
@@ -73,7 +73,7 @@
 			OutsideRing.attr({
 				stroke: "#0084B4",
 				fill: "#0084B4"
-			})
+			});
 
 			// Start listening for wheatley:respond events
 			responseListener = $rootScope.$on('wheatley:respond', onWheatleyRespond);
@@ -145,13 +145,21 @@
 				}, 50);
 			} else if (data.code === 2) {
 				// Normal Success code
-				WheatleyHead.animate({r:wheatleyFailureSize}, 80, function() {
-					WheatleyBody.animate({'stroke': 'lime'}, 50);
-					WheatleyHead.animate({r:$ctrl.wheatleySize}, 50);
-					$timeout(function() {
-						WheatleyBody.animate({'stroke': '#4AC7EE'}, 100);
-					}, 50);
-				});
+				InsideRing.animate({
+					fill: "lime"
+				}, 50);
+				OutsideRing.animate({
+					fill: "lime",
+					stroke: "lime"
+				}, 50, function() {
+					InsideRing.animate({
+						fill: "#1DCAFF"
+					}, 100);
+					OutsideRing.animate({
+						fill: "#0084B4",
+						stroke: "#0084B4"
+					}, 100);
+				})
 			} else if (data.code === 3) {
 				// Failure code
 				// WheatleyHead.animate({r:wheatleyFailureSize}, 80, function() {

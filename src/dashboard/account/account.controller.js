@@ -4,8 +4,8 @@
 	angular.module('dashboard')
 	.controller('AccountController', AccountController);
 
-	AccountController.$inject = ['AuthorizationService', 'AccountService', '$rootScope']
-	function AccountController(AuthorizationService, AccountService, $rootScope) {
+	AccountController.$inject = ['AuthorizationService', 'AccountService', '$rootScope', '$mdDialog']
+	function AccountController(AuthorizationService, AccountService, $rootScope, $mdDialog) {
 
 		// The controller for the individual account component
 
@@ -19,11 +19,24 @@
 		$ctrl.editAccount = false;
 		$ctrl.preview_size = '';
 
+		// Object to copy to the user's clipboard
+		var clipboard = new Clipboard('.copyButton');
+
 		$ctrl.$onInit = function() {
 			$ctrl.originalAccount = $ctrl.account.website;
 			$ctrl.editedAccount = $ctrl.account.website.split('.')[0];
 			// $ctrl.editedAccount = $ctrl.account.website.replace(/.com|.ca/gi, "");
 			$ctrl.account.website = $ctrl.editedAccount;
+
+			clipboard.on('success', function(e) {
+			    $rootScope.$broadcast('dashboard:toast', {message: "Copied!"});
+
+			    e.clearSelection();
+			});
+
+			clipboard.on('error', function(e) {
+			    $rootScope.$broadcast('dashboard:toast', {message: "Error"});
+			});
 			
 		}
 
@@ -34,7 +47,6 @@
 			$ctrl.editAccountForm.email = $ctrl.account.email;
 			$ctrl.editAccountForm.website = $ctrl.originalAccount;
 			$ctrl.editAccountForm.password = $ctrl.account.password;
-			console.log("The account is: ", $ctrl.account.password);
 
 			if (!$ctrl.editAccount) {
 				// Show the account with this variable
@@ -90,8 +102,6 @@
 						'_id': account._id.$oid
 					}
 
-					console.log(config);
-
 					// We have to reencrypt the password
 					// Get the required parameters for the encryption
 					var pin = AccountService.getPin();
@@ -115,7 +125,6 @@
 			  				config['password'] = encryptedPassword;
 			  				// Send out the http request
 			  				AuthorizationService.editAccount(config).then(function(response) {
-			  					console.log("saved")
 			  					$ctrl.account.website = $ctrl.editAccountForm.website;
 			  					$ctrl.account.email = $ctrl.editAccountForm.email;
 			  					$ctrl.account.password = $ctrl.editAccountForm.password;
@@ -136,20 +145,37 @@
 
 		// Function to remove an account
 		$ctrl.removeAccount = function(account) {
+			var config = {
+				'_id': account._id.$oid
+			}
+			AuthorizationService.deleteAccount(config)
+				.then(function(resp) {
+					// Broadcasts to accounts controller to refetch the accounts
+					$rootScope.$broadcast('account:delete', {refresh: true});
+				});
+			
+		}
+
+		// Ask if the user is sure about deleting the account
+		$ctrl.showConfirm = function(ev, account) {
 			if ($ctrl.editAccount) {
 				$ctrl.editAccount = false;
 			} else {
-				var config = {
-					'_id': account._id.$oid
-				}
-				AuthorizationService.deleteAccount(config)
-					.then(function(resp) {
-						// Broadcasts to accounts controller to refetch the accounts
-						$rootScope.$broadcast('account:delete', {refresh: true});
-					});
+				// Appending dialog to document.body to cover sidenav in docs app
+				var confirm = $mdDialog.confirm()
+					.title('Are you sure you want to delete this account?')
+					.textContent('This will permanently delete the data!')
+					.ariaLabel('Delete Account')
+					.targetEvent(ev)
+					.ok("I'm sure")
+					.cancel('Cancel')
+					.clickOutsideToClose(true);
+
+				$mdDialog.show(confirm).then(function() {
+					$ctrl.removeAccount(account);
+					})
+				};
 			}
 		}
-
-	}
 
 })();

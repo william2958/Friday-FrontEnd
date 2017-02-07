@@ -4,7 +4,7 @@
 	background-color: white;
 	margin: 15px auto 15px;
 	border-radius: 5px;
-	border: 1px solid #eee;
+	/*border: 1px solid #eee;*/
 }
 
 .account-form-buffer-top {
@@ -21,6 +21,21 @@
 
 .form-group {
 	margin: 0;
+}
+
+.material-account-text-entry-field {
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+	height: 50px;
+	font-size: 1.2em;
+	background-color: white;
+	border: 0;
+	border-bottom: 1px solid #bbb;
+	background-color: white;
+	box-shadow: none;
+	padding: 0;
+	border-radius: 0px;
 }
 
 .account-text-entry-field {
@@ -78,15 +93,18 @@
 	cursor: hand;
 }
 
+#submit-account-button {
+}
+
 #submit-account-button:hover {
 	cursor: pointer; 
 	cursor: hand;
 }
 
 #add-account-button {
-	margin: 10px auto 10px;
+	margin: 30px auto 0px;
 	text-align: center;
-	font-size: 1.4em;
+	font-size: 1.6em;
 }
 
 #search-box {
@@ -172,7 +190,7 @@ md-slider.md-default-theme.md-primary .md-thumb:after, md-slider.md-primary .md-
 }
 
 /* EXTRA SMALL SCREENS */
-@media (max-width: 767px) {
+@media (min-width: 480px) and (max-width: 767px) {
 	.submit-account-form {
 		width: 90%;
 	}
@@ -186,5 +204,29 @@ md-slider.md-default-theme.md-primary .md-thumb:after, md-slider.md-primary .md-
 		width: 90%;
 		padding-left: 5px;
 		padding-right: 5px;
+	}
+	.material-account-text-entry-field {
+		width: 90%;
+	}
+}
+
+/********** XXS SCREENS **********/
+@media (max-width: 479px) {
+	.submit-account-form {
+		width: 100%;
+	}
+	#search-box {
+		width: 100%;
+	}
+	.account-text-entry-field {
+		width: 90%;
+	}
+	md-content#slider-container {
+		width: 90%;
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+	.material-account-text-entry-field {
+		width: 90%;
 	}
 }

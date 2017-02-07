@@ -1,9 +1,9 @@
 <div class="account">
-	<div class="row" ng-click="$ctrl.expandAccount($ctrl.account)">
-		<div class="col-xs-2 col-xxs-0" id="website-preview">
+	<div class="row">
+		<div class="col-xs-2 col-xxs-0" id="website-preview" ng-click="$ctrl.expandAccount($ctrl.account)">
 			<img src="images/wheatley1.0.svg" class="website-preview">
 		</div>
-		<div class="col-xs-9 no-padding-col" ng-class="$ctrl.preview_size">
+		<div class="col-xs-8 no-padding-col" ng-class="$ctrl.preview_size" ng-click="$ctrl.expandAccount($ctrl.account)">
 			<div ng-class="$ctrl.websiteClass">
 				<span ng-if="!$ctrl.editAccount">
 					{{$ctrl.account.website}}
@@ -11,14 +11,16 @@
 				<span ng-class="$ctrl.emailClass">
 					<span ng-if="!$ctrl.editAccount">{{$ctrl.account.email}}</span>
 				</span>
-				<span ng-if="$ctrl.editAccount"><input type="text" name="editwebsitename"  id="website-text-field" ng-model="$ctrl.editAccountForm.website"></span>
-				<span ng-if="$ctrl.editAccount"><input type="text" name="editemailname"  id="email-text-field" ng-model="$ctrl.editAccountForm.email"></span>
+				<span ng-if="$ctrl.editAccount"><input type="text" name="editwebsitename"  id="edit-website-text-field" ng-model="$ctrl.editAccountForm.website"></span>
+				<span ng-if="$ctrl.editAccount"><input type="text" name="editemailname"  id="edit-email-text-field" ng-model="$ctrl.editAccountForm.email"></span>
 				
 			</div>
 		</div>
-		<!-- <div class="col-xs-2">
-			<div class="clipboard">COPY</div>
-		</div> -->
+		<div class="col-xs-2">
+			<button class="copyButton" data-clipboard-text="{{$ctrl.account.password}}">
+				<img src="images/clipboard.svg" alt="Copy to Clipboard" class="clipboard-icon">
+			</button>
+		</div>
 	</div>
 
 	<div class="additionalinfo row" ng-slide-down="$ctrl.account.showAccount" lazy-render duration="0.2" paddings="0.1">
@@ -32,25 +34,26 @@
 				<input ng-if="$ctrl.editAccount" type="{{$ctrl.inputType}}" ng-model="$ctrl.editAccountForm.password" class="display-password-field" ng-disabled="!$ctrl.editAccount">
 				<button ng-click="$ctrl.showPassword()" class="show-password-button">{{$ctrl.buttonText}}</button>
 			</div>
-			<div class="col-xs-3 delete-button" ng-click="$ctrl.removeAccount($ctrl.account)">
+			<div class="col-xs-3 delete-button" ng-click="$ctrl.showConfirm($event, $ctrl.account)">
 				{{$ctrl.editAccount ? 'CANCEL' : 'DELETE'}}
 			</div>
 		</div>
 		<div class="row visible-xxs">
 			<div class="account-details">
 				<input ng-if="!$ctrl.editAccount" type="{{$ctrl.inputType}}" ng-model="$ctrl.account.password" class="display-password-field" ng-disabled="!$ctrl.editAccount">
-				<input ng-if="$ctrl.editAccount" type="{{$ctrl.inputType}}" ng-model="$ctrl.editAccountForm.password" class="display-password-field" ng-disabled="!$ctrl.editAccount">
+				<input ng-if="$ctrl.editAccount" type="{{$ctrl.inputType}}" ng-model="$ctrl.editAccountForm.password" class="display-password-field" ng-disabled="!$ctrl.editAccount" id="password-field">
 				<button ng-click="$ctrl.showPassword()" class="show-password-button">{{$ctrl.buttonText}}</button>
 			</div>
 			<div class="xxs-buttons">
 				<div class="edit-button" ng-click="$ctrl.toggleEditAccount($ctrl.account)">
 					{{$ctrl.editAccount ? 'SAVE' : 'EDIT'}}
 				</div>
-				<div class="delete-button" ng-click="$ctrl.removeAccount($ctrl.account)">
+				<div class="delete-button" ng-click="$ctrl.showConfirm($event, $ctrl.account)">
 					{{$ctrl.editAccount ? 'CANCEL' : 'DELETE'}}
 				</div>
 			</div>
 		</div>
 		<div class="buffer-bottom"></div>
+
 	</div>
 </div>

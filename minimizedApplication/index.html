@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>F.R.I.D.A.Y.</title>
+	<base href="/">
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" type="text/css" href="css/angular-material.css" >
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/universalstyles.css">
+
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300" rel="stylesheet">
+
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+
+</head>
+
+<body ng-app="myApp">
+
+	<div class="container-fluid">
+		<ui-view>loading</ui-view>
+	</div>
+
+	<script type="text/javascript" src="src/js/vendor.min.js"></script>
+
+  	<!-- AES Security -->
+	<script type="text/javascript" src="src/security/buffer.js"></script>
+	<script type="text/javascript" src="src/security/scrypt.js"></script>
+	<script type="text/javascript" src="src/security/aes.js"></script>
+
+  	<script type="text/javascript" src="src/js/main.min.js"></script>
+
+</body>
+</html>

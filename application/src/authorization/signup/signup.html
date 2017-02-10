@@ -6,6 +6,13 @@
   </div>
 </div>
 
+<!-- Display loading message when logging in -->
+<div class="validation-errors-container">
+  <span ng-if="signup.loading" class="loading-message">
+    Registering user...
+  </span>
+</div>
+
 <!-- Display an error for form validation -->
 <div class="validation-errors-container">
   <div ng-if="signup.signupForm.email.$touched">

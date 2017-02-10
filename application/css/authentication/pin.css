@@ -40,6 +40,63 @@ h3 {
 	border: 3px solid red;
 }
 
+/* Welcome banner styles */
+
+#welcome-header {
+	font-size: 2em;
+	text-align: center;
+}
+
+.pin-info {
+	font-size: 1.1em;
+	text-align: center;
+	margin-top: 10px;
+}
+
+#more-info-button {
+	text-align: center;
+}
+
+#more-info-button > a {
+	color: #41ACD7;
+}
+
+#more-info-button > a:hover {
+	cursor: pointer;
+}
+
+.pin-info > a {
+	color: #41ACD7;
+}
+
+.pin-info > a:hover {
+	cursor: pointer;
+}
+
+/* MEDIUM DEVICES */
+@media (min-width: 992px) {
+	.pin-info {
+		width: 700px;
+		margin-right: auto;
+		margin-left: auto;
+	}
+}
+
+/********* SM+ SCREENS **********/
+@media (min-width: 768px) and (max-width: 991px) {
+	.pin-info {
+		padding-left: 100px;
+		padding-right: 100px;
+	}
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+	.pin-info {
+		padding-left: 50px;
+		padding-right: 50px;
+	}
+}
+
 /********** XXS SCREENS **********/
 @media (max-width: 479px) {
 	#pin-field input {

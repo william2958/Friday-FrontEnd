@@ -119,6 +119,11 @@
 	border-bottom: 2px solid red;
 }
 
+.loading-message {
+	color: #F49E37;
+	font-size: 1.2em;
+}
+
 /* SIGN UP PAGE END */
 
 /* LARGE DEVICES */

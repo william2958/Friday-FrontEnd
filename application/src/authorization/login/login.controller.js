@@ -26,6 +26,8 @@
 
 			$ctrl.errors = [];
 
+			$ctrl.loading = false;
+
 			$ctrl.success = AuthorizationService.getSuccess();
 			$ctrl.errors = AuthorizationService.getErrors();
 			// Initialize the listener when the controller is initialized
@@ -54,6 +56,7 @@
 
 				// Tell wheatley to show Loading indicator
 				$rootScope.$broadcast('wheatley:respond', {code: 1});
+				$ctrl.loading = true;
 
 				var config = {
 					'email': $ctrl.enteredLoginForm.email,
@@ -63,6 +66,7 @@
 				// Submit the form using AuthorizationService
 				AuthorizationService.signIn(config)
 					.then(function(resp) {
+						$ctrl.loading = false;
 						var token = resp.data.auth_token;
 						AuthorizationService.setToken(token);
 						// Show success indicator
@@ -70,6 +74,7 @@
 						// Pass off to wheatley
 					})
 					.catch(function(resp) {
+						$ctrl.loading = false;
 						// If the sign in failed, clear all the messages
 						// So that new ones can be added
 						AuthorizationService.clearSuccess();

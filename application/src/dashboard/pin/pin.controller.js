@@ -12,8 +12,8 @@
 	angular.module('dashboard')
 	.controller('PinController', PinController);
 
-	PinController.$inject = ['$state', '$element', 'PinService', '$rootScope', '$timeout'];
-	function PinController($state, $element, PinService, $rootScope, $timeout) {
+	PinController.$inject = ['$state', '$element', 'PinService', '$rootScope', '$timeout', 'AuthorizationService'];
+	function PinController($state, $element, PinService, $rootScope, $timeout, AuthorizationService) {
 
 		var $ctrl = this;
 
@@ -34,7 +34,27 @@
 
 		// Set initial focus to the first digit
 		$ctrl.$onInit = function() {
+			if (AuthorizationService.getToken()) {
+				// Get the user from the server using the token
+				// Calls the rails user#index
+				AuthorizationService.getUser(AuthorizationService.getToken())
+				.success(function(resp) {
+					// Set the user if it works
+					$ctrl.user = resp;
+					console.log($ctrl.user);
+				})
+				.error(function(resp) {
+					// Unauthorized
+					// Delete token
+					AuthorizationService.signOut();
+					$state.go('authorization.login');
+				});
+			} else {
+				// Unauthorized
+				$state.go('authorization.login');
+			}
 			digit1.focus();
+			$ctrl.moreinfo = false;
 		};
 
 		// Set the focus to the next digit every time one digit is entered
@@ -103,6 +123,11 @@
 				}, 50);
 			}
 			
+		};
+
+		// Show the more information section
+		$ctrl.showinfo = function() {
+			$ctrl.moreinfo = true;
 		};
 	}
 

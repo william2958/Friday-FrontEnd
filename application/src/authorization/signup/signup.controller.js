@@ -16,6 +16,7 @@
 		$ctrl.passwords_match = false;
 
 		$ctrl.$onInit = function() {
+			$ctrl.loading = false;
 			// Reset the errors on initialization
 			$ctrl.errors = [];
 			// Tell wheatley to be smaller
@@ -41,6 +42,7 @@
 						'password': $ctrl.registrationForm.password
 					};
 
+					$ctrl.loading = true;
 					// Tell wheatley to show Loading indicator
 					$rootScope.$broadcast('wheatley:respond', {code: 1});
 
@@ -48,15 +50,19 @@
 					// config parameters
 					AuthorizationService.signUp(config)
 					.then(function(resp) {
+						$ctrl.loading = false;
 						// handle success response
 						// Show success indicator
 						$rootScope.$broadcast('wheatley:respond', {code: 2});
 						AuthorizationService.addSuccess('User successfully registered.');
+						AuthorizationService.addSuccess('Please confirm your account in your confirmation email.');
 						AuthorizationService.clearErrors();
 						$state.go('authorization.login');
 					})
 					.catch(function(resp) {
+						$ctrl.loading = false;
 						if (resp.data.status == 'error'){
+							$rootScope.$broadcast('wheatley:respond', {code: 3});
 							// Display the errors to the user
 							AuthorizationService.addError(resp.data.message);
 							$ctrl.errors = AuthorizationService.getErrors();

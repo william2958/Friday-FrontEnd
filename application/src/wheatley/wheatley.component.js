@@ -12,18 +12,6 @@
 		// The controller to handle all the wheatley actions
 		var $ctrl = this;
 
-		// Set up the variables for wheatley
-		var wheatleyDefaultSize = 115;
-		$ctrl.wheatleySize = wheatleyDefaultSize;
-		$ctrl.wheatleyBodyStrokeSize = 50;
-		$ctrl.wheatleyBodyColor = "#00aced";
-		$ctrl.wheatleyHeadColor = "#c0deed";
-
-		var wheatleySuccessSize = $ctrl.wheatleySize + $ctrl.wheatleyBodyStrokeSize/2;
-		var wheatleyFailureSize = $ctrl.wheatleySize + 16;
-		var wheatleyPulseSize = $ctrl.wheatleySize + 6;
-		var wheatleySmallSize = $ctrl.wheatleySize - 30;
-
 		var responseListener;
 
 		// Use the Snap library to handle Wheatley animations
@@ -34,6 +22,7 @@
 		var OutisdeRingWrapper = Wheatley.select("#outsideringwrapper");
 		var InsideRing = Wheatley.select("#insidering_1_");
 		var StatusRing = Wheatley.select("#statusring_1_");
+		var ComplementaryRing = Wheatley.select("#complimentaryring");
 		var CoreRing = Wheatley.select("#corering");
 		var DashedRing = Wheatley.select("#dashedring");
 		var EntireRing = Wheatley.select("#entirering");
@@ -75,8 +64,16 @@
 				fill: "#0084B4"
 			});
 
+			ComplementaryRing.attr({
+				fill: "#41ACD7"
+			});
+
 			DashedRing.attr({
 				stroke: "#1DCAFF"
+			});
+
+			CoreRing.attr({
+				stroke: "#76cee5"
 			});
 
 			// Start listening for wheatley:respond events
@@ -120,6 +117,30 @@
 			}, 20000, statusRingRotate);
 		}
 
+		function resetRingColors() {
+
+			InsideRing.animate({
+				fill: "#1DCAFF"
+			}, 100);
+
+			OutsideRing.animate({
+				stroke: "#0084B4",
+				fill: "#0084B4"
+			}, 100);
+
+			ComplementaryRing.animate({
+				fill: "#41ACD7"
+			}, 100);
+
+			DashedRing.animate({
+				stroke: "#1DCAFF"
+			}, 100);
+
+			CoreRing.animate({
+				stroke: "#76cee5"
+			}, 100);
+		}
+
 		function onWheatleyRespond(event, data) {
 			if (data.code === 0) {
 				// Key pressed code
@@ -145,11 +166,24 @@
 				// Loading code
 				// WheatleyBody.animate({'stroke': 'orange'}, 200);
 				InsideRing.animate({
-					fill: 'orange'
+					fill: '#FFA500'
 				}, 50);
 
 				DashedRing.animate({
 					stroke: 'orange'
+				}, 50);
+
+				OutsideRing.animate({
+					stroke: "#FF7538",
+					fill: "#FF7538"
+				}, 50);
+
+				ComplementaryRing.animate({
+					fill: "#FF8C00"
+				}, 50);
+
+				CoreRing.animate({
+					stroke: "#FBCEB1"
 				}, 50);
 
 			} else if (data.code === 2) {
@@ -164,13 +198,7 @@
 					fill: "#6eb636",
 					stroke: "#6eb636"
 				}, 50, function() {
-					InsideRing.animate({
-						fill: "#1DCAFF"
-					}, 100);
-					OutsideRing.animate({
-						fill: "#0084B4",
-						stroke: "#0084B4"
-					}, 100);
+					resetRingColors();
 				});
 			} else if (data.code === 3) {
 				// Failure code
@@ -191,13 +219,7 @@
 					fill: "red",
 					stroke: "red"
 				}, 200, function() {
-					InsideRing.animate({
-						fill: "#1DCAFF"
-					}, 400);
-					OutsideRing.animate({
-						fill: "#0084B4",
-						stroke: "#0084B4"
-					}, 400);
+					resetRingColors();
 				});
 			} else if (data.code === 4) {
 				// Make wheatley smaller
@@ -242,13 +264,7 @@
 					fill: "#62b231",
 					stroke: "#62b231"
 				}, 50, function() {
-					InsideRing.animate({
-						fill: "#1DCAFF"
-					}, 100);
-					OutsideRing.animate({
-						fill: "#0084B4",
-						stroke: "#0084B4"
-					}, 100);
+					resetRingColors();
 					$rootScope.$broadcast('login:success', {code: 1});
 				});
 			} else if (data.code === 7) {

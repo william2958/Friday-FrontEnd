@@ -242,6 +242,16 @@ footer {
 	font-size: 3.5em;
 }
 
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+a:hover {
+	text-decoration: none;
+	color: inherit;
+}
+
 /* STYLES FOR THE ACCOUNT PREVIEW */
 
 .account {
@@ -410,7 +420,7 @@ footer {
 }
 
 /* EXTRA SMALL SCREENS */
-@media (max-width: 767px) {
+@media (min-width: 480px) and (max-width: 767px) {
 	.info-header {
 		margin-top: 60px;
 		font-weight: medium;
@@ -458,6 +468,101 @@ footer {
 	}
 }
 
+/********** XXS SCREENS **********/
+@media (max-width: 479px) {
+	.info-header {
+		margin-top: 60px;
+		font-weight: medium;
+		font-size: 30px;
+		margin-left: -10px;
+		color: white;
+		letter-spacing: 4px;
+	}
+	#Wheatley {
+		height: 120px;
+		width: 120px;
+		margin-top: 40px;
+		margin-bottom: 40px;
+	}
+	.header-card {
+		padding: 15px;
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+	.summary-card {
+		padding: 15px;
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+	#button-row {
+		margin-left: 0px;
+	}
+	#loginbutton {
+		font-size: 0.4em;
+		margin-right: 0px;
+		margin-left: 0px;
+		padding: 8px;
+		padding-left: 17px;
+		padding-right: 17px;
+		margin-top: 0px;
+	}
 
+	#signupbutton {
+		font-size: 0.4em;
+		margin-right: 0px;
+		padding: 8px;
+		padding-left: 10px;
+		padding-right: 10px;
+		margin-top: 0px;
+	}
+	.account {
+		display: none;
+	}
+	.account_website_enlarged {
+		margin-left: 10px;
+		font-size: 2.1em;
+	}
+	.clipboard-icon {
+		width: 25px;
+		height: 25px;
+		margin-right: 7px;
+	}
+	.account-details {
+		padding: 0;
+	}
+	.display-password-field {
+		width: 60%;
+	}
+	.edit-button {
+		font-size: 0.8em;
+	}
+	.show-password-button {
+		font-size: 0.7em;
+	}
+	#pin-field {
+		margin-left: -10px;
+		margin-right: -10px;
+	}
+	#pin-field input {
+		width: 30px;
+		height: 40px;
+		font-size: 1.2em;
+		margin: 2px;
+	}
+	.pin-subcard-header {
+		margin-top: 10px;
+	}
+	footer {
+		height: 200px;
+	}
+	#footer-header {
+		padding-top: 30px;
+		font-size: 2.5em;
+	}
+	.signupnowbutton {
+		font-size: 2.5em;
+		margin-top: 10px;
+	}
+}
 
 

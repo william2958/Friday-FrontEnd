@@ -39,6 +39,9 @@
 		// When the user signs out, destroy the auth token from
 		// cookies by calling .signOut, then redirect
 		$ctrl.handleSignOutBtnClick = function() {
+			AuthorizationService.clearSuccess();
+			AuthorizationService.clearErrors();
+			AuthorizationService.addSuccess('Logged out.');
 			AuthorizationService.signOut();
 			$state.go('authorization.login');
 	    };

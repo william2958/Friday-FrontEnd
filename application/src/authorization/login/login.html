@@ -25,6 +25,13 @@
   <span ng-if="login.loginForm.password.$error.required && login.loginForm.password.$touched" class="validation-errors">Password is required. </span>
 </div>
 
+<!-- Display loading message when logging in -->
+<div class="validation-errors-container">
+  <span ng-if="login.loading" class="loading-message">
+    Logging in...
+  </span>
+</div>
+
 <!-- Form for login submission -->
 <form role="form" name="login.loginForm" novalidate>
   <div class="form-group">

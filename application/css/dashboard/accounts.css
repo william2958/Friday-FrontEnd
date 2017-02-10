@@ -161,13 +161,33 @@ md-slider.md-default-theme.md-primary .md-thumb:after, md-slider.md-primary .md-
 	background-color: black;
 }
 
+/* ACCOUNTS GREETING CARD STYLES */
+
+.account_greeting_header {
+	font-size: 1.3em;
+	font-family: helvetica;
+	font-weight: 300;
+}
+
+.account_greeting_text {
+	margin-top: 15px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+#no-hover {
+	cursor: auto;
+}
+
+/* END ACCOUNTS GREETING CARD STYLES */
+
 /* LARGE DEVICES */
 @media (min-width: 1200px) {
 	.submit-account-form {
-		width: 80%;
+		width: 70%;
 	}
 	#search-box {
-		width: 60%;
+		width: 70%;
 	}
 }
 
